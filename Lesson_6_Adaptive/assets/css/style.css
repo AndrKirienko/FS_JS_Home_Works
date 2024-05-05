@@ -293,6 +293,53 @@ header {
   border-top: 1px solid #d4cfde;
 }
 
+.your-work-section {
+  margin: 6.25rem 0 1.25rem;
+}
+
+.your-work-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.your-work-items > li {
+  margin: 3.5rem 0 1.5rem;
+  max-width: 18.75rem;
+  width: 100%;
+}
+
+.title-your-work {
+  color: var(--main-color-text);
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.title-your-work-item {
+  margin-top: 1.5rem;
+  color: var(--main-color-text);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.icon-your-work {
+  width: 4rem;
+  height: 4rem;
+  display: inline-block;
+}
+
+.description-your-work-item {
+  color: var(--sub-main-color-text);
+  margin-top: 0.5rem;
+}
+
+.footer-bg-color{
+	background-color: #1D2830;
+	padding: 5rem 0 1.5rem;
+}
+
 @media screen and (max-width: 1070px) {
   .privileges-section {
     flex-direction: column;
@@ -302,6 +349,11 @@ header {
 
   .privileges-items > li {
     width: 100%;
+  }
+
+  .head-privilege-item,
+  .description-privilege-item {
+    text-align: center;
   }
 
   .privileges-items > li:first-child {
@@ -339,6 +391,30 @@ header {
 
   .title-main {
     font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 660px) {
+
+	.your-work-items{
+		gap: 0;
+	}
+  .your-work-items > li {
+    max-width: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	 margin: 2.5rem 0 .5rem;
+  }
+
+  .icon-your-work{
+	margin: 0 auto;
+  }
+
+  .title-your-work-item,
+  .description-your-work-item {
+    text-align: center;
   }
 }
 

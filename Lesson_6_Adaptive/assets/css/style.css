@@ -335,9 +335,62 @@ header {
   margin-top: 0.5rem;
 }
 
-.footer-bg-color{
-	background-color: #1D2830;
-	padding: 5rem 0 1.5rem;
+.footer-bg-color {
+  background-color: #1d2830;
+  padding: 5rem 0 1.5rem;
+  color: #fff;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  margin-bottom: 5rem;
+}
+
+.footer-menu-items > li + li,
+.footer-menu-store > li + li {
+  margin-top: 1.5rem;
+}
+
+a {
+  color: inherit;
+}
+.footer-menu-items > li:first-child,
+.footer-menu-store > li:first-child {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vector-white {
+  display: none;
+}
+
+.since {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #fff;
+  padding-top: 1.5rem;
+}
+
+.text-since {
+  font-size: 0.875rem;
+  color: #d9dbe1;
+}
+
+.link-since {
+  display: flex;
+}
+
+.link-since > li {
+  width: 2rem;
+  height: 2rem;
+}
+
+.link-since > li + li {
+  margin-left: 1.5rem;
 }
 
 @media screen and (max-width: 1070px) {
@@ -394,33 +447,72 @@ header {
   }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 670px) {
+  .your-work-items {
+    gap: 0;
+  }
 
-	.your-work-items{
-		gap: 0;
-	}
   .your-work-items > li {
     max-width: none;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-	 margin: 2.5rem 0 .5rem;
+    margin: 2.5rem 0 0.5rem;
   }
 
-  .icon-your-work{
-	margin: 0 auto;
+  .icon-your-work {
+    margin: 0 auto;
   }
 
   .title-your-work-item,
   .description-your-work-item {
     text-align: center;
   }
+
+  .footer-menu {
+    display: block;
+  }
+
+  .footer-bg-color {
+    padding: 3rem 0 2.0625rem;
+  }
+
+  .footer-menu-items > li:nth-child(n + 2) {
+    display: none;
+  }
+
+  .footer-menu-items > li:first-child {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .vector-white {
+    display: block;
+  }
+
+  .footer-menu-store > li {
+    display: block;
+  }
+
+  .footer-menu {
+    margin-bottom: 3.5rem;
+  }
 }
 
 @media screen and (max-width: 540px) {
   .list-teams > li:last-child {
     display: none;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .link-since {
+    display: none;
+  }
+
+  .since{
+	padding-top: 2rem;
   }
 }
 

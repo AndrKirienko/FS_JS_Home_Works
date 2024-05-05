@@ -9,6 +9,7 @@ a {
 html {
   --main-color-text: #35414b;
   --sub-main-color-text: #4e5a65;
+  --ancillary-color: #794cff;
 }
 
 body {
@@ -46,7 +47,7 @@ header {
 }
 
 .dot {
-  color: #794cff;
+  color: var(--ancillary-color);
 }
 
 .nav-menu,
@@ -87,7 +88,7 @@ header {
   cursor: pointer;
   padding: 1rem 1.5rem;
   border-radius: 4px;
-  color: #794cff;
+  color: var(--ancillary-color);
   font-weight: 500;
 }
 
@@ -195,9 +196,9 @@ header {
 
 .btn-form-top-section {
   color: #fff;
-  background-color: #794cff;
+  background-color: var(--ancillary-color);
   border-radius: 0px 4px 4px 0px;
-  border: 1px solid #794cff;
+  border: 1px solid var(--ancillary-color);
   width: 10rem;
   cursor: pointer;
   padding: 1.125rem 1.5rem;
@@ -232,16 +233,82 @@ header {
   margin-top: 6.25rem;
 }
 
-.prominent-text{
-	font-weight: 700;
+.prominent-text {
+  font-weight: 700;
 }
 
-.list-teams{
-	margin-top: 1.5625rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 10px;
+.list-teams {
+  margin-top: 1.5625rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.privileges-section-bg-color {
+  margin-top: 6.25rem;
+  background-color: #f0ebfa;
+  border-top: 1px solid #c9c0d9;
+  border-bottom: 1px solid #c9c0d9;
+}
+
+.privileges-section {
+  padding: 3.75rem 0.625rem;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.img-chat-wrapper {
+  max-width: 41rem;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.head-privilege-item {
+  font-weight: 600;
+  color: var(--main-color-text);
+  font-size: 1.125rem;
+}
+
+.description-privilege-item {
+  color: var(--sub-main-color-text);
+  margin-top: 0.625rem;
+}
+
+.privileges-items > li {
+  padding: 1.625rem 2.25rem;
+  width: 23.125rem;
+}
+
+.privileges-items > li:first-child {
+  border-left: 0.5rem solid var(--ancillary-color);
+  background-color: #f6f3fc;
+  border-radius: 0px 8px 8px 0px;
+}
+
+.privileges-items > li:nth-child(n + 3) {
+  border-top: 1px solid #d4cfde;
+}
+
+@media screen and (max-width: 1070px) {
+  .privileges-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .privileges-items > li {
+    width: 100%;
+  }
+
+  .privileges-items > li:first-child {
+    border: none;
+    border-bottom: 6px solid var(--ancillary-color);
+    border-radius: 8px 8px 0px 0px;
+  }
 }
 
 @media screen and (max-width: 846px) {
@@ -266,8 +333,8 @@ header {
     background: #35414b0b;
   }
 
-  .discount{
-	margin-top: 10rem;
+  .discount {
+    margin-top: 10rem;
   }
 
   .title-main {
@@ -275,10 +342,10 @@ header {
   }
 }
 
-@media screen and (max-width: 540px){
-	.list-teams>li:last-child{
-		display: none;
-	}
+@media screen and (max-width: 540px) {
+  .list-teams > li:last-child {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 414px) {
@@ -320,8 +387,8 @@ header {
     max-width: 20rem;
   }
 
-  .head-graph-section{
-	font-size: .6875rem;
-	margin-top: 3.375rem;
+  .head-graph-section {
+    font-size: 0.6875rem;
+    margin-top: 3.375rem;
   }
 }

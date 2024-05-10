@@ -15,6 +15,7 @@ html {
 body {
   font-family: "Inter", Courier, monospace;
   color: var(--main-color-text);
+  overflow-x: hidden;
 }
 
 .wrapper {
@@ -116,7 +117,7 @@ header {
   position: absolute;
   width: 195.5rem;
   height: 195.5rem;
-  background: #f0ebfa2e;
+  background: #FBFAFE;
   border-radius: 50%;
   border: 1px solid #f0ebfa;
   left: 50%;
@@ -511,8 +512,8 @@ a {
     display: none;
   }
 
-  .since{
-	padding-top: 2rem;
+  .since {
+    padding-top: 2rem;
   }
 }
 

@@ -1,0 +1,57 @@
+* {
+box-sizing: border-box;
+}
+
+body{
+	background-color: aquamarine;
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+	padding: 2rem;
+}
+
+.user-card{
+	max-width: 350px;
+	width: 100%;
+	max-width: 280px;
+	margin: 0 auto;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+}
+
+.user-photo{
+	object-fit: cover;
+	object-position: center;
+	width: 100%;
+}
+
+.user-card-main{
+	padding: 1rem;
+}
+
+.user-name{
+	 text-align: center;
+	 font-size: 1.5rem;
+	 margin-top: 1.5rem;
+	 font-weight: 600;
+}
+
+.user-age{
+	margin-top: 1rem;
+	text-align: justify;
+	flex: 1 1 auto;
+}
+
+.feedback{
+	margin-top: 0.5rem;
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+	font-size: 12px;
+	flex-wrap: wrap;
+}
+
+.user-phone, .user-email{
+	display: flex;
+	gap: 5px;
+}
+

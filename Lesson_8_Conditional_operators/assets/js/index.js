@@ -1,20 +1,22 @@
-let isDay = true;
+//task 1
+const isDay = true;
 let isDayStyle;
 
-if (isDay) {
-	isDayStyle = 'light-theme';
-} else {
-	isDayStyle = 'dark-theme';
-}
+isDay ? isDayStyle = 'light-theme' : isDayStyle = 'dark-theme';
 
+//task 2
+
+const isOnline = false;
+
+isOnline ? alert("Ваше повідомлення відправлено"): alert("Ваше повідомлення буде відправлено при під'єднанні до мережі Інтернет");
 
 
 
 
 //task 4
-const userName = 'Test Name', userFemale = 'Woman';
+const userName = 'Test Name', userFemale = '';
 let userFemaleStyle = null;
-let isLogin = true;
+const isLogin = true;
 
 switch (userFemale) {
 	case 'Man':
@@ -66,11 +68,7 @@ const userLogged = `
 
 let userLoggedSection;
 
-if (isLogin) {
-	userLoggedSection = userLogged;
-} else {
-	userLoggedSection = userNotLogged;
-}
+isLogin ? userLoggedSection = userLogged : userLoggedSection = userNotLogged;
 
 document.write(
 	topSectionHeader,

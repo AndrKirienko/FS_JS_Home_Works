@@ -8,15 +8,37 @@ isDay ? isDayStyle = 'light-theme' : isDayStyle = 'dark-theme';
 
 const isOnline = false;
 
-isOnline ? alert("Ваше повідомлення відправлено"): alert("Ваше повідомлення буде відправлено при під'єднанні до мережі Інтернет");
+isOnline ? alert("Ваше повідомлення відправлено") : alert("Ваше повідомлення буде відправлено при під'єднанні до мережі Інтернет");
 
+//task 3
+let inputUserPrice, discount, correctInputNumber = false;
 
+do {
+	inputUserPrice = Number(prompt("Введіть суму покупки"));
 
+	if (!isNaN(inputUserPrice) && inputUserPrice != '' && inputUserPrice > 0) {
+		correctInputNumber = true;
+	}
+
+} while (!correctInputNumber);
+
+if (inputUserPrice >= 500 && inputUserPrice < 800) {
+	discount = (inputUserPrice * 3) / 100;
+	inputUserPrice -= discount
+	alert("Ціна зі знижкою 3% дорівнює " + inputUserPrice + " грн")
+} else if (inputUserPrice >= 800) {
+	discount = (inputUserPrice * 5) / 100;
+	inputUserPrice -= discount
+	alert("Ціна зі знижкою 5% дорівнює " + inputUserPrice + " грн")
+} else {
+	alert("Ціна без знижки " + inputUserPrice + " грн")
+}
 
 //task 4
-const userName = 'Test Name', userFemale = '';
+const userName = 'Test Name',
+	userFemale = 'Mgfdfs',
+	isLogin = true;
 let userFemaleStyle = null;
-const isLogin = true;
 
 switch (userFemale) {
 	case 'Man':

@@ -52,3 +52,21 @@ for (let numberStartTask2LoopFor = numberStartTask2, numberEndTask2LoopFor = num
 	}
 }
 
+//task 3
+
+const numberStartTask3 = 1, numberEndTask3 = 100;
+
+console.log("Task 3 Loop While");
+
+let numberStartTask3LoopWhile = numberStartTask3, numberEndTask3LoopWhile = numberEndTask3;
+let sum = null;
+
+while (numberStartTask3LoopWhile <= numberEndTask3LoopWhile) {
+	sum += numberStartTask3LoopWhile++;
+}
+console.log("Sum: ", sum);
+
+console.log("Task 3 Loop While");
+
+let numberStartTask3LoopWhile = numberStartTask3, numberEndTask3LoopWhile = numberEndTask3;
+let sum = null;

@@ -64,9 +64,22 @@ let sum = null;
 while (numberStartTask3LoopWhile <= numberEndTask3LoopWhile) {
 	sum += numberStartTask3LoopWhile++;
 }
-console.log("Sum: ", sum);
+console.log("Sum loop while:", sum);
 
-console.log("Task 3 Loop While");
+console.log("Task 3 Loop Do While");
 
-let numberStartTask3LoopWhile = numberStartTask3, numberEndTask3LoopWhile = numberEndTask3;
-let sum = null;
+let numberStartTask3LoopDoWhile = numberStartTask3, numberEndTask3LoopDoWhile = numberEndTask3;
+sum = null;
+
+do {
+	sum += numberStartTask3LoopDoWhile++;
+} while (numberStartTask3LoopDoWhile <= numberEndTask3LoopDoWhile);
+
+console.log("Sum loop do while:", sum);
+
+console.log("Task 3 Loop For");
+
+for (let numberStartTask3LoopFor = numberStartTask3, numberEndTask3LoopFor = numberEndTask3, sum = null; numberStartTask3LoopFor <= numberEndTask3LoopFor; numberStartTask3LoopFor++) {
+	sum += numberStartTask3LoopFor;
+}
+console.log("Sum loop for:", sum);

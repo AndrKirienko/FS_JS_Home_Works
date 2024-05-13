@@ -15,11 +15,7 @@ let inputUserPrice, discount, correctInputNumber = false;
 
 do {
 	inputUserPrice = Number(prompt("Введіть суму покупки"));
-
-	if (!isNaN(inputUserPrice) && inputUserPrice != '' && inputUserPrice > 0) {
-		correctInputNumber = true;
-	}
-
+	correctInputNumber = !isNaN(inputUserPrice) && inputUserPrice != '' && inputUserPrice > 0;
 } while (!correctInputNumber);
 
 if (inputUserPrice >= 500 && inputUserPrice < 800) {
@@ -37,7 +33,7 @@ if (inputUserPrice >= 500 && inputUserPrice < 800) {
 //task 4
 const userName = 'Test Name',
 	userFemale = 'Mgfdfs',
-	isLogin = true;
+	isLogin = false;
 let userFemaleStyle = null;
 
 switch (userFemale) {
@@ -97,3 +93,83 @@ document.write(
 	userLoggedSection,
 	bottomSectionHeader
 )
+
+//task 5 
+
+const userDayNumber = Number(prompt("Введіть номер дня тижня"));
+
+switch (userDayNumber) {
+	case 1:
+		alert("Це понеділок"); break;
+	case 2:
+		alert("Це вівторок"); break;
+	case 3:
+		alert("Це середа"); break;
+	case 4:
+		alert("Це четверг"); break;
+	case 5:
+		alert("Це пятниця"); break;
+	case 6:
+		alert("Це субота"); break;
+	case 7:
+		alert("Це неділя"); break;
+	default:
+		alert("дня з таким номером не існує"); break;
+}
+
+//task 6
+
+const day = Number(10);
+
+if (day >= 1 && day <= 10) {
+	alert(day + " це ПЕРША декада");
+} else if (day >= 11 && day <= 20) {
+	alert(day + " це ДРУГА декада");
+} else if (day >= 21 && day <= 30) {
+	alert(day + " це ТРЕТЯ декада");
+} else {
+	alert("Зі значенням " + day + " декади не виявлено");
+}
+
+//task 6.1 
+
+const day2 = Number(265);
+
+switch (day2) {
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+	case 10:
+		alert(day2 + " це ПЕРША декада"); break;
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+	case 16:
+	case 17:
+	case 18:
+	case 19:
+	case 20:
+		alert(day2 + " це ДРУГА декада"); break;
+	case 21:
+	case 22:
+	case 23:
+	case 24:
+	case 25:
+	case 26:
+	case 27:
+	case 28:
+	case 29:
+	case 30:
+		alert(day2 + " це ТРЕТЯ декада"); break;
+	default:
+		alert("Зі значенням " + day2 + " декади не виявлено"); break;
+
+}

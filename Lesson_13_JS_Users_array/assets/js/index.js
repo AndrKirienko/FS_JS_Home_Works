@@ -30,12 +30,15 @@ User.prototype.getFullName = function () {
 }
 
 //Отримати масив користувачів, які не підписані (not subscribed).
+
 const usersNotSubscribed = users.filter(user => user.isSubscribed === false);
 
 //Вивести список повних імен користувачів.
+
 const usersFullName = users.map(user => user.firstName + " " + user.lastName)
 
 //Отримати масив повних імен осіб жіночої статі шкільного віку (6 – 18 років).
+
 function fullNameSchoolWomen(user) {
 	if (user.age >= 6 && user.age <= 18) {
 		return user.getFullName();
@@ -45,14 +48,17 @@ function fullNameSchoolWomen(user) {
 const usersSchoolWomen = users.filter(fullNameSchoolWomen);
 
 //Видалити з масиву користувача з email  useremail5@gmail.com.
+
 const usersIDDelete = users.findIndex(user => user.email === 'useremail5@gmail.com');
 
 users.splice(usersIDDelete, 1);
 
 //Змінити email користувачу з id 2 (можна спробувати використати find).
+
 users.find(user => user.id === 2).email = 's@gmail.com';
 
 //Визначити, який відсоток користувачів підписані (subscribed)
+
 function percentageSubscribedUsers(user) {
 	const countUserSubscribed = users.filter(user => user.isSubscribed === true);
 	return Math.round((countUserSubscribed.length * 100) / user.length);
@@ -67,11 +73,18 @@ function countAverageAge(currentValue, index, array) {
 }
 const averageAge = Math.round(users.map(countAverageAge).reduce((previousValue, currentValue) => previousValue + currentValue));
 
+//варіант 2
+
+const averageAgeVar2 = Math.round(users.reduce((sum, { age }) => sum + age, 0) / users.length);
+
 //Впорядкувати користувачів за віком (sort).
+
 const sortAge = users.sort((a, b) => a.age - b.age);
 
 //Перевірити, чи є серед користувачів користувач з email`ом useremail7@gmail.com.
+
 const emailUser7 = users.some(user => user.email === 'useremail7@gmail.com')
 
 //Перевірити, чи всі користувачі підписані (subscribed).
+
 const usersAllSubscribed = users.every(user => user.isSubscribed === true)

@@ -29,7 +29,8 @@ imgAdd.onmouseenter = () => {
 const user = {
   firstName: 'Test',
   lastName: 'Testovych',
-  profilePhoto: 'https://images.pexels.com/photos/4902634/pexels-photo-4902634.jpeg&#39',
+  profilePhoto:
+    'https://platinumlist.net/guide/wp-content/uploads/2023/03/8359_img_worlds_of_adventure-big1613913137.jpg-1024x683.webp',
   birthday: new Date('2000-05-16'),
   nickname: 'super dev',
   likesCount: 10,
@@ -41,18 +42,33 @@ const addUser = document.querySelector('#add-user')
 
 addUser.onclick = () => {
   const userCardHTML = `<article class="user-card">
-  	<img
-    	class="user-photo"
-    	src="${user.profilePhoto}"
-    	alt=""
-  	/>
-  	<div class="user-body">
-    	<h2 class="user-name">${user.firstName} ${user.lastName}</h2>
-    	<p class="user-birthday">Birthday: ${user.birthday}</p>
-    	<p class="user-nice">Nicname: ${user.nickname}</p>
-    	<span><i class="like fa-regular fa-heart"></i> ${user.likesCount}</span>
-  	</div>
+	<img
+	class="user-photo"
+	src="${user.profilePhoto}"
+	alt=""
+	/>
+	<div class="user-body">
+	<h2 class="user-name">${user.firstName} ${user.lastName}</h2>
+	<p title="" class="user-birthday">Birthday: ${user.birthday}</p>
+	<p class="user-nick">Nicname: ${user.nickname}</p>
+	<span><i class="like fa-solid fa-heart"></i>${user.likesCount}</span>
+	</div>
 	</article>`
-	const container = document.querySelector('.container') 
+  const container = document.querySelector('.container')
   container.insertAdjacentHTML('beforeend', userCardHTML)
+
+  //при натисканні на сердечко перефарбувати його в червоний колір
+  const like = document.querySelector('.like')
+  like.onclick = () =>
+    like.style.color === 'red'
+      ? (like.style.color = 'black')
+      : (like.style.color = 'red')
+
+  //при наведенні на дату народження показувати кількість повних років.
+  const userAge = document.querySelector('.user-birthday')
+  userAge.onmouseenter = () => {
+    userAge.title = `${
+      new Date().getFullYear() - user.birthday.getFullYear()
+    } age`
+  }
 }

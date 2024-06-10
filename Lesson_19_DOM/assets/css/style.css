@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.user-card {
+  max-width: 18.75rem;
+  width: 100%;
+  min-width: 200px;
+  border-radius: 1.875rem;
+  background-color: #a7e0ff;
+  margin: 1.25rem auto 0px;
+}
+
+.user-body {
+  padding: 1.25rem;
+}
+.user-photo {
+  border-radius: 1.875rem 1.875rem 0 0;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+.user-name {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.user-birthday,
+.user-nice,
+.like {
+  margin-top: 0.4375rem;
+}

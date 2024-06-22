@@ -1,0 +1,10 @@
+* {
+box-sizing: border-box;
+}
+
+.random-photo{
+	width: 18.75rem;
+	height: 12.5rem;
+	object-fit: cover;
+	object-position: center;
+}

@@ -6,8 +6,11 @@ article {
   border: 1px solid grey;
   padding: 20px;
   margin: 20px;
-  box-shadow: 0 0 5px black;
   position: relative;
+}
+
+article:hover {
+  box-shadow: 0 0 5px black;
 }
 
 .newsImage {
@@ -26,35 +29,41 @@ article {
   text-align: center;
   margin: 40px auto;
   font-weight: 700;
-	font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
-.newsCategory{
-	margin-top: 70px;
-	text-transform: uppercase;
-	color: dimgrey;
+.newsCategory {
+  margin-top: 70px;
+  text-transform: uppercase;
+  color: dimgrey;
 }
 
-.newsBody{
-	margin-top: 20px;
-	text-align: justify;
+.newsBody {
+  margin-top: 20px;
+  text-align: justify;
 }
 
-.newsDate{
-	text-align: right;
-	margin-top: 10px;
-	color: dimgrey;
+.newsDate {
+  text-align: right;
+  margin-top: 10px;
+  color: dimgrey;
 }
 
-.newsLike{
-	position: absolute;
-	top:20px;
-	right: 20px;
-	outline: none;
-	border: none;
-	border-radius: 20%;
+.newsLike {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  outline: none;
+  border: none;
+  border-radius: 20%;
 }
 
-.newsLike:hover{
-	c
+.newsLike:hover {
+	transform: scale(1.1);
 }
+
+.newsLikeActive{
+	color: red;
+}
+
+

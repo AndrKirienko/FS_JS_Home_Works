@@ -38,34 +38,61 @@ const news = [
   },
 ]
 
-const articleEl = document.createElement('article')
-document.querySelector('body').append(articleEl)
+news.forEach(newsItem => {
+  document.querySelector('body').append(addNews(newsItem))
+})
 
 function addNews({ title, headerBgSrc, category, body, date }) {
+  const articleEl = document.createElement('article')
   articleEl.append(
-    createNewElement('h3', title, 'newsTitle'),
-    createElementImg(headerBgSrc, 'newsImage'),
-    createNewElement('p', category, 'newsCategory'),
-    createNewElement('div', body, 'newsBody'),
-    createNewElement('p', date, 'newsDate'),
-    createNewElement('button', 'like', 'newsLike'),
+    createNewElement({ type: 'h3', content: title, className: 'newsTitle' }),
+    createElementImg({ src: headerBgSrc, className: 'newsImage' }),
+    createNewElement({
+      type: 'p',
+      content: category,
+      className: 'newsCategory',
+    }),
+    createNewElement({ type: 'div', content: body, className: 'newsBody' }),
+    createNewElement({ type: 'p', content: date, className: 'newsDate' }),
+    createNewElement({
+      type: 'button',
+      content: 'like',
+      className: 'newsLike',
+    }),
   )
+
+  articleEl.onclick = () => {
+    articleEl.remove()
+  }
+
+  articleEl.onmouseover = ({ type }) => {
+    articleEl.classList.add = type
+  }
+  articleEl.onmouseout = () => {
+    articleEl.classList.remove('articleHover')
+  }
+
+  return articleEl
 }
 
-// console.log(news[0].)
 addNews(news[0])
 
-function createNewElement(type, content, className) {
+function createNewElement({ type, content, className }) {
   const newElement = document.createElement(type)
   newElement.textContent = content
   newElement.classList = className
+  if (type === 'button') {
+    newElement.addEventListener('click', clickHandler, { capture: true })
+    function clickHandler(){
+      newElement.classList.add('newsLikeActive')
+    }
+  }
   return newElement
 }
 
-function createElementImg(src, className) {
+function createElementImg({ src, className }) {
   const newImg = document.createElement('img')
   newImg.classList = className
-  console.log(src)
   newImg.src = src
   return newImg
 }

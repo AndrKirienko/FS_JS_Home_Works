@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script defer src="./assets/js/index.js"></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <section class="form-section">
+      <h2 class="form-head">Contact form</h2>
+      <form class="reg-form">
+        <label class="form-label">
+          <span class="label-caption">Your name</span>
+          <div class="wrapper-input">
+            <input
+              class="form-input"
+              name="firstName"
+              type="text"
+              autofocus
+              tabindex="1"
+              placeholder="First name"
+              pattern="^[A-Z][a-z]*$"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <input
+              class="form-input"
+              name="lastName"
+              type="text"
+              tabindex="2"
+              placeholder="Last name"
+              pattern="^[A-Z][a-z]*$"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+          </div>
+        </label>
+        <label class="form-label">
+          <span class="label-caption"> Your email </span>
+          <div class="wrapper-input">
+            <input
+              class="form-input"
+              name="email"
+              type="email"
+              tabindex="3"
+              placeholder="your_email@mail.com"
+              required
+            />
+          </div>
+        </label>
+        <label class="form-label">
+          <span class="label-caption"> Phone </span>
+          <div class="wrapper-input">
+            <input
+              class="form-input"
+              name="phoneFirstPart"
+              type="tel"
+              tabindex="4"
+              placeholder="000"
+              pattern="^\d{3}$"
+              required
+            />
+            <input
+              class="form-input"
+              name="phoneSecondPart"
+              type="tel"
+              tabindex="5"
+              placeholder="000"
+              pattern="^\d{3}$"
+              required
+            />
+            <input
+              class="form-input"
+              name="phoneThirdPart"
+              type="tel"
+              tabindex="6"
+              placeholder="0000"
+              pattern="^\d{4}$"
+              required
+            />
+          </div>
+        </label>
+        <label class="form-label">
+          <span class="label-caption"> Message subject </span>
+          <div class="wrapper-input">
+            <select class="msgSub" name="massageSubject" tabindex="7" required>
+              <option value="other" selected>Other</option>
+              <option value="team">Team</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+        </label>
+
+        <label class="form-label">
+          <span class="label-caption"> Message </span>
+          <div class="wrapper-input">
+            <textarea class="msg" name="message" cols="30" rows="10" required></textarea>
+          </div>
+        </label>
+
+        <button class="submit-btn" type="submit">Submit form</button>
+      </form>
+    </section>
+  </body>
+</html>

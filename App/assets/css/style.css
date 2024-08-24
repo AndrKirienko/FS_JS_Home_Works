@@ -74,12 +74,12 @@ body {
   font-weight: 500;
 }
 
-.valid{
+.form-input:valid, .msgSub:valid, .msg:valid{
 	border: 1px solid rgb(34, 194, 34);
 	box-shadow: 0 0 3px rgb(34, 194, 34);
 }
 
-.invalid{
+.form-input:invalid, .msgSub:invalid, .msg:invalid{
 	border: 1px solid rgb(223, 57, 57);
 	box-shadow: 0 0 3px rgb(223, 57, 57);
 }

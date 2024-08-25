@@ -1,4 +1,4 @@
-import React from 'react'
+import { CiTrash } from 'react-icons/ci'
 import styles from './ReactList.module.sass'
 
 function ReactList({ users }) {
@@ -12,6 +12,9 @@ function ReactList({ users }) {
               <span>{u.name}</span>
               <span>{u.surname}</span>
             </h2>
+						<button className={styles.trashBtn}>
+              <CiTrash />
+            </button>
           </li>
         ))}
       </ul>

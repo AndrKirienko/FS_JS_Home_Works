@@ -8,6 +8,7 @@
 	gap: .9375rem
 
 .userWrapperItem
+	margin: 0 10px
 	padding: .625rem
 	border-radius: .625rem
 	border: 1px solid black
@@ -15,9 +16,28 @@
 	align-items: center
 	gap: .625rem
 
+	&:hover
+		box-shadow: 0 0 .3125rem black
+		transform: scale(1.005)
+
 .userImg
 	border-radius: 50%
 
 .userFullName
 	display: flex
 	gap: .3125rem
+
+.trashBtn
+	outline: none
+	background-color: transparent
+	border: none
+	padding: 0
+	font-size: 1.7rem
+	display: flex
+	justify-content: center
+	align-items: center
+	margin-left: auto
+
+	&:hover
+		transform: scale(1.1)
+		color: red

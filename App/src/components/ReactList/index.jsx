@@ -6,8 +6,7 @@ function ReactList({ users }) {
   const [userList, setUserList] = useState(users)
 
   const handleRemoveUser = userId => {
-    const updatedUsers = userList.filter(user => user.id !== userId)
-    setUserList(updatedUsers)
+    setUserList(userList.filter(user => user.id !== userId))
   }
 
   return (

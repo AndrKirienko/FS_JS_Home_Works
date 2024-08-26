@@ -20,13 +20,12 @@ function Slider() {
         <button className={styles.prevBtn} onClick={prevSlide}>
           <GrPrevious />
         </button>
-        <div className={styles.slide}>
-          <img
-            className={styles.slideImg}
-            src={slides[currentSlideIndex].src}
-            alt=""
-          />
-        </div>
+        <img
+          key={slides.id}
+          className={styles.slideImg}
+          src={slides[currentSlideIndex].src}
+          alt=""
+        />
         <button className={styles.nextBtn} onClick={nextSlide}>
           <GrNext />
         </button>

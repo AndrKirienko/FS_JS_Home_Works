@@ -35,6 +35,14 @@ function SingUp() {
     })
   }
 
+  const isSubmitBtnDisabled = () => {
+    return !(
+      SING_UP_FORM_REG_EXP.name.test(name) &&
+      SING_UP_FORM_REG_EXP.email.test(email) &&
+      SING_UP_FORM_REG_EXP.password.test(password)
+    )
+  }
+
   return (
     <section className={styles.singUpWrapper}>
       <form className={styles.formWrapper} onSubmit={handleFormSubmit}>
@@ -76,7 +84,11 @@ function SingUp() {
             required
           />
         </label>
-        <button type="submit" className={styles.singUpBtn}>
+        <button
+          disabled={isSubmitBtnDisabled()}
+          type="submit"
+          className={styles.singUpBtn}
+        >
           Sing Up
         </button>
       </form>

@@ -1,39 +1,46 @@
-.slider-container
-	position: relative
-	width: 100%
-	max-width: 800px
-	margin: auto
-	overflow: hidden
-
-.slides
-	display: flex
-	transition: transform 0.5s ease
-
-.slide
-	min-width: 100%
+*
 	box-sizing: border-box
 
-	& img
-		width: 100%
-		display: block
+.sliderWrapper
+	height: 100vh
+	display: flex
+	justify-content: center
+	align-items: center
 
-.controls
-	text-align: center
-	margin-top: 10px
+.slider
+	position: relative
+	margin: 0 60px
 
-.button
-	margin: 0 5px
-	padding: 10px 20px
+.slideImg
+	width: 50rem
+	height: 30rem
+	object-fit: cover
+	object-position: center
+
+.slide
+	transition: opacity 0.5s ease-in-out
+
+.nextBtn, .prevBtn
+	background-color: rgba(0, 0, 0, 0)
+	border: none
+	font-size: 2rem
+	width: 50px
+	height: 50px
+	display: flex
+	justify-content: center
+	align-items: center
+	padding: 10px
 	cursor: pointer
-
-.fullscreen
+	border-radius: 50%
 	position: absolute
-	top: 0
-	left: 0
-	width: 100%
-	height: 100%
-	background-color: black
+	top: 50%
+	transform: translateY(-50%)
 
-img
-	width: 18.75rem
-	height: 300px
+	&:hover
+		box-shadow: 0 0 3px black
+
+.prevBtn
+	left: -55px
+
+.nextBtn
+	right: -55px

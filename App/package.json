@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node .",
-    "run": "nodemon"
+    "dev": "nodemon ."
   },
   "keywords": [],
   "author": "",

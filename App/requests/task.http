@@ -41,7 +41,7 @@ Content-Type: application/json
 
 #updateTask (404)
 
-PATCH http://localhost:5000/tasks/6 HTTP/1.1
+PATCH http://localhost:5000/tasks/10 HTTP/1.1
 Content-Type: application/json
 
 {

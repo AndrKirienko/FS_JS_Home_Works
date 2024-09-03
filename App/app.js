@@ -48,14 +48,27 @@ const getTaskById = ({ params: { id } }, res) => {
 
 const updateTaskById = ({ body, params: { id } }, res) => {
   const foundTask = tasks.findIndex((t) => t.id === id)
-  foundTask === -1 && res.status(404).send('Task non found')
+  if (foundTask === -1) {
+    return res.status(404).send('Task non found')
+  }
   tasks[foundTask] = { ...tasks[foundTask], ...body }
   res.status(200).send(tasks[foundTask])
+}
+
+const deleteTaskById = ({ params: { id } }, res) => {
+  const foundTask = tasks.findIndex((t) => t.id === id)
+  if (foundTask === -1) {
+    return res.status(404).send('Task not found')
+  }
+
+  tasks.splice(foundTask, 1)
+  res.status(204).end()
 }
 
 app.get('/tasks', getTasks)
 app.post('/tasks', createTask)
 app.get('/tasks/:id', getTaskById)
 app.patch('/tasks/:id', updateTaskById)
+app.delete('/tasks/:id', deleteTaskById)
 
 module.exports = app

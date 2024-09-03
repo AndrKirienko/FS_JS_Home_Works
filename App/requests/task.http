@@ -47,3 +47,15 @@ Content-Type: application/json
 {
 	"isDone": true
 }
+
+###
+
+#deleteTaskById (200)
+
+DELETE http://localhost:5000/tasks/3 HTTP/1.1
+
+###
+
+#deleteTaskById (404)
+
+DELETE http://localhost:5000/tasks/9 HTTP/1.1

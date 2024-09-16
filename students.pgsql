@@ -51,7 +51,7 @@
      FROM students;
 
 --Отримати рейтинговий список студентів (ім'я (*або ініціал)+прізвище, середній бал): спочатку студентів із найвищим середнім балом, наприкінці з найменшим.
-   SELECT first_name || ' ' || last_name AS full_name,
+   SELECT SUBSTRING(first_name, 1, 1) || '. ' || last_name AS full_name,
           avg_mark
      FROM students
  ORDER BY avg_mark DESC;
@@ -134,3 +134,6 @@
                           AND last_name = 'Johnson' THEN 'ST-01234U'
                               ELSE NULL
           END;
+
+   DELETE FROM students
+    WHERE entered_at < 2018;

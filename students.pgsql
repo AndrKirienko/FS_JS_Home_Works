@@ -38,7 +38,7 @@
      FROM students;
 
 -- Отримати інформацію про студентів (ім'я+прізвище *через пробіл, дата народження) у порядку від найстаршого до наймолодшого.
-   SELECT first_name || ' ' || last_name AS full_name,
+   SELECT SUBSTRING(first_name, 1, 1) || '. ' || last_name AS full_name,
           birthday
      FROM students
  ORDER BY birthday;
@@ -58,3 +58,5 @@
      FROM students
     LIMIT 3
    OFFSET 3;
+
+--Отримати список 3-х найуспішніших студентів (ім'я, прізвище, середній бал, група).

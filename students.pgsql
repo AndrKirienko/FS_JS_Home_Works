@@ -95,3 +95,8 @@
      FROM students
     WHERE first_name = 'John'
       AND avg_mark BETWEEN 85 AND 100;
+
+--*Відобразити студентів, які користуються послугами оператора Київстар. (тобто код 012 або 090 або ...)
+   SELECT *
+     FROM students
+    WHERE phone_number ~ '^.{3}012|090.*$';

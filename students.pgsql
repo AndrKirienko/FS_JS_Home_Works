@@ -31,3 +31,9 @@
 --отримати весь список користувачів
    SELECT *
      FROM students;
+
+-- Отримати інформацію про студентів (ім'я+прізвище *через пробіл, дата народження) у порядку від найстаршого до наймолодшого.
+   SELECT first_name || ' ' || last_name AS full_name,
+          birthday
+     FROM students
+ ORDER BY birthday;

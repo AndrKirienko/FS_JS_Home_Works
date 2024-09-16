@@ -24,7 +24,7 @@
    INSERT INTO students (first_name, last_name, birthday, phone_number, "group", avg_mark, gender, entered_at, department)
    VALUES ('John', 'Doe', '2000-05-15', '+380123456789', 'CS101', 85, 'Male', 2018, 'Computer Science'),
           ('Jane', 'Smith', '1999-08-22', '+380987654321', 'CS102', 90, 'Female', 2017, 'Computer Science'),
-          ('Alex', 'Johnson', '2001-03-10', '+380234567890', 'IT202', 78, 'Male', 2019, 'Information Technology'),
+          ('John', 'Johnson', '2001-03-10', '+380234567890', 'IT202', 78, 'Male', 2019, 'Information Technology'),
           ('Emma', 'Davis', '2002-11-30', '+380345678901', 'IT203', 82, 'Female', 2020, 'Information Technology'),
           ('John', 'Wilson', '1998-02-14', '+380456789012', 'CS101', 88, 'Male', 2016, 'Computer Science'),
           ('Olivia', 'Martinez', '2001-07-19', '+380567890123', 'CS101', 92, 'Female', 2019, 'Computer Science'),
@@ -76,13 +76,13 @@
           SUBSTRING(phone_number, 1, 6) || '*******' AS phone_number
      FROM students;
 
---Відобразити студентів на ім'я Anton та прізвище Antonov.
+--Відобразити студентів на ім'я John та прізвище Johnson.
    SELECT *
      FROM students
     WHERE first_name = 'John'
       AND last_name = 'Doe';
 
---Відобразити студентів, які народилися в період із 2005 по 2008 рік.
+--Відобразити студентів, які народилися в період із 2000 по 2001 рік.
    SELECT *
      FROM students
     WHERE EXTRACT(
@@ -90,4 +90,8 @@
                FROM birthday
           ) BETWEEN 2000 AND 2001;
 
-			
+--Відобразити студентів на ім'я Ощрт із середніми балами більше 85.
+   SELECT *
+     FROM students
+    WHERE first_name = 'John'
+      AND avg_mark BETWEEN 85 AND 100;

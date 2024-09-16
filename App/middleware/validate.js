@@ -12,8 +12,7 @@ module.exports.validateTaskOnCreate = async (req, res, next) => {
 
     next()
   } catch (err) {
-    res.status(422).send(err.errors)
-    next()
+    next(err)
   }
 }
 
@@ -22,9 +21,8 @@ module.exports.validateTaskOnUpdate = async (req, res, next) => {
   try {
     const validatedTask = await UPDATE_TASK_VALIDATION_SCHEMA.validate(body)
     req.body = validatedTask
-    next()
+    next( )
   } catch (err) {
-    res.status(422).send(err.errors)
-    next()
+    next(err)
   }
 }

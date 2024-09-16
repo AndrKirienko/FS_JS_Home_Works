@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
+    "http-errors": "^2.0.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {

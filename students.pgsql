@@ -100,3 +100,8 @@
    SELECT *
      FROM students
     WHERE phone_number ~ '^.{3}012|090.*$';
+
+--Для студента з ім'ям Olivia змінити написання імені Olya.
+   UPDATE students
+      SET first_name = 'Olya'
+    WHERE first_name = 'Olivia';

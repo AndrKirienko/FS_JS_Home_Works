@@ -105,3 +105,32 @@
    UPDATE students
       SET first_name = 'Olya'
     WHERE first_name = 'Olivia';
+
+--*Додати до таблиці стовпець з інформацією про номер студентського білету студента (2 букви - 5 цифр 1 буква: AA-00000A). Додати дані в цей стовпець (мінімум в один рядок).
+    ALTER TABLE students
+      ADD COLUMN student_card CHAR(9) UNIQUE CHECK (student_card ~ '^[A-Z]{2}-\d{5}[A-Z]$');
+
+   UPDATE students
+      SET student_card = CASE
+                    WHEN first_name = 'John'
+                          AND last_name = 'Doe' THEN 'AB-12345C'
+                              WHEN first_name = 'Jane'
+                          AND last_name = 'Smith' THEN 'CD-67890E'
+                              WHEN first_name = 'John'
+                          AND last_name = 'Johnson' THEN 'EF-23456G'
+                              WHEN first_name = 'Emma'
+                          AND last_name = 'Davis' THEN 'GH-78901H'
+                              WHEN first_name = 'John'
+                          AND last_name = 'Wilson' THEN 'IJ-34567K'
+                              WHEN first_name = 'Olya'
+                          AND last_name = 'Martinez' THEN 'KL-89012M'
+                              WHEN first_name = 'Liam'
+                          AND last_name = 'Garcia' THEN 'MN-45678N'
+                              WHEN first_name = 'Sophia'
+                          AND last_name = 'Johnson' THEN 'OP-90123Q'
+                              WHEN first_name = 'Noah'
+                          AND last_name = 'Williams' THEN 'QR-56789R'
+                              WHEN first_name = 'Isabella'
+                          AND last_name = 'Johnson' THEN 'ST-01234U'
+                              ELSE NULL
+          END;

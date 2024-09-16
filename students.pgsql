@@ -7,7 +7,7 @@
           first_name VARCHAR(50) NOT NULL,
           last_name VARCHAR(50),
           birthday DATE CHECK (birthday <= CURRENT_DATE) NOT NULL,
-          phone_number VARCHAR(13) UNIQUE CHECK (phone_number ~ '^\+380\d{9}$') NOT NULL,
+          phone_number CHAR(13) UNIQUE CHECK (phone_number ~ '^\+380\d{9}$') NOT NULL,
           "group" VARCHAR(10) NOT NULL,
           avg_mark SMALLINT CHECK (avg_mark BETWEEN 0 AND 100),
           gender VARCHAR(50) CHECK (gender IN ('Male', 'Female')),

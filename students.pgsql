@@ -67,3 +67,8 @@
      FROM students
  ORDER BY avg_mark DESC
     LIMIT 3;
+
+--* Отримати інфо про студентів (ініціал+прізвище, номер телефону), де номер телефону буде частково прихований та представлений у форматі: +38012******* (тобто видно код оператора, але не сам номер).
+   SELECT SUBSTRING(first_name, 1, 1) || '. ' || last_name AS full_name,
+          SUBSTRING(phone_number, 1, 6) || '*******' AS phone_number
+     FROM students;

@@ -80,4 +80,14 @@
    SELECT *
      FROM students
     WHERE first_name = 'John'
-       AND last_name = 'Doe';
+      AND last_name = 'Doe';
+
+--Відобразити студентів, які народилися в період із 2005 по 2008 рік.
+   SELECT *
+     FROM students
+    WHERE EXTRACT(
+          YEAR
+               FROM birthday
+          ) BETWEEN 2000 AND 2001;
+
+			

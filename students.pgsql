@@ -52,3 +52,9 @@
           avg_mark
      FROM students
  ORDER BY avg_mark DESC;
+
+--Отримати другу сторінку списку студентів під час перегляду по 3 студентів на сторінці.
+   SELECT *
+     FROM students
+    LIMIT 3
+   OFFSET 3;

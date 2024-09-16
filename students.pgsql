@@ -60,3 +60,10 @@
    OFFSET 3;
 
 --Отримати список 3-х найуспішніших студентів (ім'я, прізвище, середній бал, група).
+   SELECT first_name,
+          last_name,
+          avg_mark,
+          "group"
+     FROM students
+ ORDER BY avg_mark DESC
+    LIMIT 3;

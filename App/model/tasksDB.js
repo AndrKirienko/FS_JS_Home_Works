@@ -8,7 +8,7 @@ module.exports = class TasksDB {
     return this.tasks[this.tasks.length - 1]
   }
 
-  setTasks(page, results) {
+  getTasks(page, results) {
     return [...this.tasks.slice((page - 1) * results, page * results)]
   }
 

@@ -46,3 +46,9 @@
 --Отримати список шифрів груп, що не повторюються.
    SELECT DISTINCT "group"
      FROM students;
+
+--Отримати рейтинговий список студентів (ім'я (*або ініціал)+прізвище, середній бал): спочатку студентів із найвищим середнім балом, наприкінці з найменшим.
+   SELECT first_name || ' ' || last_name AS full_name,
+          avg_mark
+     FROM students
+ ORDER BY avg_mark DESC;

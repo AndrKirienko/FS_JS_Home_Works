@@ -1,14 +1,12 @@
 import {
-  Link,
   NavLink,
   Route,
   BrowserRouter as Router,
   Routes,
 } from 'react-router-dom'
 
-const styleActiveLink = ({ isActive }) => ({
-  color: isActive ? 'red' : 'inherit',
-})
+const styleActiveLink = ({ isActive }) => (isActive ? { color: 'red' } : {})
+
 function App() {
   return (
     <Router>

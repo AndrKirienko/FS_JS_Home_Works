@@ -1,11 +1,28 @@
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import {
+  Link,
+  NavLink,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from 'react-router-dom'
 
+const styleActiveLink = ({ isActive }) => ({
+  color: isActive ? 'red' : 'inherit',
+})
 function App() {
   return (
     <Router>
-      <Link to="/">Home</Link>
-      <Link to="/component">Component</Link>
-      <Link to="/about">About</Link>
+      <nav>
+        <NavLink to="/" style={styleActiveLink}>
+          Home
+        </NavLink>
+        <NavLink to="/component" style={styleActiveLink}>
+          Component
+        </NavLink>
+        <NavLink to="/about" style={styleActiveLink}>
+          About
+        </NavLink>
+      </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />

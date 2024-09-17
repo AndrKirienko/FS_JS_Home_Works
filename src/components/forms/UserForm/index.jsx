@@ -16,15 +16,20 @@ function UserForm() {
       onSubmit={handleSubmit}
       validationSchema={USER_LOGIN_SCHEMA}
     >
-			{formikProps => {
-				const userLoginClassName = className(styles.input, {
-					[styles.valid]: !formikProps.errors.userLogin && formikProps.touched.userLogin,
-					[styles.invalid]: formikProps.errors.userLogin && formikProps.touched.userLogin
-				})
-				const userPasswordClassName = className(styles.input, {
-					[styles.valid]: !formikProps.errors.userPassword && formikProps.touched.userPassword,
-					[styles.invalid]: formikProps.errors.userPassword && formikProps.touched.userPassword
-				})
+      {formikProps => {
+        const userLoginClassName = className(styles.input, {
+          [styles.valid]:
+            !formikProps.errors.userLogin && formikProps.touched.userLogin,
+          [styles.invalid]:
+            formikProps.errors.userLogin && formikProps.touched.userLogin,
+        })
+        const userPasswordClassName = className(styles.input, {
+          [styles.valid]:
+            !formikProps.errors.userPassword &&
+            formikProps.touched.userPassword,
+          [styles.invalid]:
+            formikProps.errors.userPassword && formikProps.touched.userPassword,
+        })
         return (
           <Form className={styles.form}>
             <label className={styles.label}>

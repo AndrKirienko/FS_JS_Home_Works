@@ -1,10 +1,11 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik'
 import React from 'react'
-import { USER_NAME_SCHEMA } from '../../utils/validationSchemas'
-
+import {
+  USER_LOGIN_SCHEMA,
+} from '../../../utils/validationSchemas'
 
 function UserForm() {
-  const initialValues = { userLogin: '' }
+  const initialValues = { userLogin: '', userPassword: '' }
   const handleSubmit = (value, formikBag) => {
     formikBag.resetForm()
   }
@@ -13,11 +14,13 @@ function UserForm() {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={USER_NAME_SCHEMA}
+      validationSchema={USER_LOGIN_SCHEMA}
     >
       <Form>
         <Field type="text" name="userLogin" />
         <ErrorMessage name="userLogin" />
+        <Field type="password" name="userPassword" />
+        <ErrorMessage name="userPassword" />
         <button type="submit">Ok</button>
       </Form>
     </Formik>

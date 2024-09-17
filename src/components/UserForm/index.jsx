@@ -1,16 +1,7 @@
-import { Formik } from 'formik'
+import { Field, Form, Formik, ErrorMessage } from 'formik'
 import React from 'react'
-import * as yup from 'yup'
+import { USER_NAME_SCHEMA } from '../../utils/validationSchemas'
 
-const USER_NAME_SCHEMA = yup.object({
-  userLogin: yup
-    .string()
-    .trim()
-    .min(2)
-    .max(32)
-    .matches(/^[A-Z]/)
-    .required(),
-})
 
 function UserForm() {
   const initialValues = { userLogin: '' }
@@ -24,24 +15,11 @@ function UserForm() {
       onSubmit={handleSubmit}
       validationSchema={USER_NAME_SCHEMA}
     >
-      {formikProps => {
-        return (
-          <form onSubmit={formikProps.handleSubmit}>
-            <input
-              type="text"
-              name="userLogin"
-              value={formikProps.values.userLogin}
-              onChange={formikProps.handleChange}
-            />
-            {formikProps.errors.userLogin && (
-              <span>{formikProps.errors.userLogin}</span>
-            )}
-            <button type="submit" disabled={!formikProps.dirty}>
-              Ok
-            </button>
-          </form>
-        )
-      }}
+      <Form>
+        <Field type="text" name="userLogin" />
+        <ErrorMessage name="userLogin" />
+        <button type="submit">Ok</button>
+      </Form>
     </Formik>
   )
 }

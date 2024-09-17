@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/component" element={<Component />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   )
@@ -27,4 +28,15 @@ function Component() {
 
 function About() {
   return <div>About</div>
+}
+
+function NotFound() {
+  return (
+    <div>
+      404 this page is not found
+      <div>
+        <Link to="/">Home</Link>
+      </div>
+    </div>
+  )
 }

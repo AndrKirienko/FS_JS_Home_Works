@@ -129,7 +129,21 @@
 
 
 --Відобразити імена та прізвища студентів та назви курсів, що ними вивчаються.
-   SELECT s.name || ' ' || s.surname AS "Full name" , c.title
+   SELECT s.name || ' ' || s.surname AS "Full name",
+          c.title
      FROM students s
     INNER JOIN exams e ON e.id_student = s.id
     INNER JOIN courses c ON c.id = e.id_cours;
+
+
+
+--Відобразити бали студента Петра Петренка з дисципліни «Основи програмування».
+   SELECT s.name || ' ' || s.surname AS "Full name",
+          s.departament,
+          e.mark
+     FROM students s
+    INNER JOIN exams e ON s.id = e.id_student
+    INNER JOIN courses c ON c.id = e.id_cours
+    WHERE s.name = 'Володимир'
+      AND s.surname = 'Пирог'
+      AND s.departament = 'Інформатика';

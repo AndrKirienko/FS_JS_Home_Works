@@ -88,3 +88,9 @@
           (13, 3, 2.9),
           (14, 4, 3.3),
           (15, 5, 4.6);
+
+
+
+-- Відобразити, коли відбувся перший набір (мінімальний рік ступу).
+   SELECT MIN(s.entered_at) AS "Minimum year of study"
+     FROM students s;

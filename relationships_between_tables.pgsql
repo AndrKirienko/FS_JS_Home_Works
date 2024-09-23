@@ -110,3 +110,18 @@
    SELECT COUNT(s.id) AS total_students_2018
      FROM students s
     WHERE s.entered_at = '2018';
+
+
+
+--*Відобразити середній вік студентів жіночої статі кожного факультету.
+   SELECT s.departament,
+          AVG(
+          EXTRACT(
+          YEAR
+               FROM AGE (s.birthday)
+          )
+          )::INT AS avg_women_age
+     FROM students s
+    WHERE gender = 'Female'
+ GROUP BY s.departament
+ ORDER BY avg_women_age DESC;

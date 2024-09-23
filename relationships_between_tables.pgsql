@@ -27,3 +27,12 @@
           ),
           departament VARCHAR(50) NOT NULL
           );
+
+
+
+   CREATE TABLE exams (
+          id SERIAL PRIMARY KEY,
+          id_student INTEGER NOT NULL REFERENCES students (id) ON UPDATE CASCADE ON DELETE CASCADE,
+          id_cours INTEGER NOT NULL REFERENCES courses (id) ON UPDATE CASCADE ON DELETE CASCADE,
+          mark DECIMAL(1, 1) CHECK (mark BETWEEN 0 AND 5) DEFAULT NULL
+          )

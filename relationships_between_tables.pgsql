@@ -35,4 +35,13 @@
           id_student INTEGER NOT NULL REFERENCES students (id) ON UPDATE CASCADE ON DELETE CASCADE,
           id_cours INTEGER NOT NULL REFERENCES courses (id) ON UPDATE CASCADE ON DELETE CASCADE,
           mark DECIMAL(1, 1) CHECK (mark BETWEEN 0 AND 5) DEFAULT NULL
-          )
+          );
+
+
+
+   INSERT INTO courses (title, discription, hours)
+   VALUES ('Курс 1', 'Опис курсу 1', '2 hours'),
+          ('Курс 2', 'Опис курсу 2', '3 hours 30 minutes'),
+          ('Курс 3', 'Опис курсу 3', '1 hour 15 minutes'),
+          ('Курс 4', 'Опис курсу 4', '4 hours'),
+          ('Курс 5', 'Опис курсу 5', '2 hours 45 minutes');

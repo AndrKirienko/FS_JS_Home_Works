@@ -125,3 +125,11 @@
     WHERE gender = 'Female'
  GROUP BY s.departament
  ORDER BY avg_women_age DESC;
+
+
+
+--Відобразити імена та прізвища студентів та назви курсів, що ними вивчаються.
+   SELECT s.name || ' ' || s.surname AS "Full name" , c.title
+     FROM students s
+    INNER JOIN exams e ON e.id_student = s.id
+    INNER JOIN courses c ON c.id = e.id_cours;

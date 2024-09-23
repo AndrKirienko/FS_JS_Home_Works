@@ -129,7 +129,7 @@
 
 
 --Відобразити імена та прізвища студентів та назви курсів, що ними вивчаються.
-   SELECT s.name || ' ' || s.surname AS "Full name",
+   SELECT s."name" || ' ' || s.surname AS "Full name",
           c.title
      FROM students s
     INNER JOIN exams e ON e.id_student = s.id
@@ -138,7 +138,7 @@
 
 
 --Відобразити бали студента Петра Петренка з дисципліни «Основи програмування».
-   SELECT s.name || ' ' || s.surname AS "Full name",
+   SELECT s."name" || ' ' || s.surname AS "Full name",
           s.departament,
           e.mark
      FROM students s
@@ -147,3 +147,23 @@
     WHERE s.name = 'Володимир'
       AND s.surname = 'Пирог'
       AND s.departament = 'Інформатика';
+
+
+
+--Відобразити студентів, які мають бали нижче 3.5.
+   SELECT s."name" || ' ' || s.surname AS "Full name",
+          e.mark
+     FROM students s
+    INNER JOIN exams e ON s.id = e.id_student
+    WHERE e.mark <= 3.5;
+
+
+
+--Відобразити студентів, які прослухали дисципліну «Основи програмування» та мають за неї оцінку.
+   SELECT s."name" || ' ' || s.surname AS "Full name",
+          e.mark,
+          s.departament
+     FROM students s
+    INNER JOIN exams e ON s.id = e.id_student
+    WHERE s.departament = 'Журналістика'
+      AND e.mark IS NOT NULL;

@@ -94,3 +94,12 @@
 -- Відобразити, коли відбувся перший набір (мінімальний рік ступу).
    SELECT MIN(s.entered_at) AS "Minimum year of study"
      FROM students s;
+
+
+
+--Відобразити кількість студентів, які навчаються у кожній групі.
+   SELECT s."group",
+          COUNT(s.id) AS student_count
+     FROM students s
+ GROUP BY s."group"
+ ORDER BY student_count DESC;

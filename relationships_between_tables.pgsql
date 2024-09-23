@@ -103,3 +103,10 @@
      FROM students s
  GROUP BY s."group"
  ORDER BY student_count DESC;
+
+
+
+--Відобразити загальну кількість студентів, які вступили 2018 року.
+   SELECT COUNT(s.id) AS total_students_2018
+     FROM students s
+    WHERE s.entered_at = '2018';

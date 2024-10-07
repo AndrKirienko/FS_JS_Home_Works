@@ -161,3 +161,30 @@
           (9, 1, 30),
           (10, 4, 50),
           (11, 9, 45);
+
+
+
+   SELECT *
+     FROM dishes d
+    INNER JOIN dishes_to_ingredients d_to_i ON d.id = d_to_i.id_dishes
+    INNER JOIN ingredients i ON i.id = d_to_i.id_ingredients;
+
+
+
+   SELECT c."name" || ' ' || c.surname AS customer_name,
+          d.title AS dish_name,
+          otd.quantity_dishes,
+          d.price * otd.quantity_dishes AS total_dish_price,
+          STRING_AGG(i.title, ', ') AS ingredients
+     FROM orders o
+     JOIN customers c ON o.id_customer = c.id
+     JOIN orders_to_dishes otd ON o.id = otd.id_orders
+     JOIN dishes d ON otd.id_dishes = d.id
+     JOIN dishes_to_ingredients dti ON d.id = dti.id_dishes
+     JOIN ingredients i ON dti.id_ingredients = i.id
+    WHERE o.id = 1
+ GROUP BY c."name",
+          c.surname,
+          d.title,
+          otd.quantity_dishes,
+          d.price;

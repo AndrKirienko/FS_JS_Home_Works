@@ -164,6 +164,16 @@
 
 
 
+   SELECT *
+     FROM orders o
+     JOIN customers c ON o.id_customer = c.id
+     JOIN orders_to_dishes otd ON o.id = otd.id_orders
+     JOIN dishes d ON otd.id_dishes = d.id
+     JOIN dishes_to_ingredients dti ON d.id = dti.id_dishes
+     JOIN ingredients i ON dti.id_ingredients = i.id;
+
+
+
 --склад та вартість (певного) замовлення
    SELECT c."name" || ' ' || c.surname AS customer_name,
           d.title AS dish_name,
@@ -212,3 +222,10 @@
     INNER JOIN orders_to_dishes o_to_d ON o.id = o_to_d.id_orders
     INNER JOIN dishes d ON d.id = o_to_d.id_dishes
     WHERE created_ad BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE;
+
+
+
+--виручку за місяць (сума всіх замовлень за місяць)
+   SELECT SUM(total_price) AS "Total price for the last month"
+     FROM orders
+    WHERE created_ad BETWEEN CURRENT_DATE - INTERVAL '1 month' AND CURRENT_DATE;

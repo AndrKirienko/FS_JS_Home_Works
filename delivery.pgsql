@@ -34,3 +34,7 @@
           id_dishes INTEGER REFERENCES dishes (id) ON UPDATE CASCADE ON DELETE RESTRICT,
           quantity_dishes SMALLINT NOT NULL
           );
+
+
+
+   CREATE TABLE ingredients (id SERIAL PRIMARY KEY, title VARCHAR(50) NOT NULL);

@@ -71,3 +71,14 @@
                 AND surname = 'Петров'
           )
  ORDER BY id_student;
+
+
+
+--Отримати список предметів, у яких кількість годин більше, ніж у "Курс 1".
+   SELECT *
+     FROM courses
+    WHERE hours > (
+             SELECT hours
+               FROM courses
+              WHERE title = 'Курс 1'
+          );

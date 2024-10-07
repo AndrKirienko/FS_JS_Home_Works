@@ -164,16 +164,6 @@
 
 
 
-   SELECT *
-     FROM orders o
-     JOIN customers c ON o.id_customer = c.id
-     JOIN orders_to_dishes otd ON o.id = otd.id_orders
-     JOIN dishes d ON otd.id_dishes = d.id
-     JOIN dishes_to_ingredients dti ON d.id = dti.id_dishes
-     JOIN ingredients i ON dti.id_ingredients = i.id;
-
-
-
 --склад та вартість (певного) замовлення
    SELECT c."name" || ' ' || c.surname AS customer_name,
           d.title AS dish_name,

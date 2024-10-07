@@ -25,3 +25,12 @@
           weigth SMALLINT NOT NULL,
           price NUMERIC(10, 5) NOT NULL
           );
+
+
+
+   CREATE TABLE orders_to_dishes (
+          id SERIAL PRIMARY KEY,
+          id_orders INTEGER REFERENCES orders (id) ON UPDATE CASCADE ON DELETE RESTRICT,
+          id_dishes INTEGER REFERENCES dishes (id) ON UPDATE CASCADE ON DELETE RESTRICT,
+          quantity_dishes SMALLINT NOT NULL
+          );

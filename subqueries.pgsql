@@ -97,4 +97,31 @@
                FROM students_exams
               WHERE "name" = 'Іван'
                 AND surname = 'Петров'
-          )
+          );
+
+
+
+--Вивести
+--студент | предмет | оцінка
+--щоб оцінка виводилася у літерному вигляді "відмінно", "добре" або "задовільно".
+--  SELECT "name" || ' ' || surname AS fullName,
+--         departament,
+--         case 
+-- 				when mark BETWEEN 0 and 3.0 then 'Незадовільно'
+-- 				else 'Інше'
+-- 				end as mark_l
+--    FROM students_exams;
+   SELECT "name" || ' ' || surname AS fullName,
+          departament,
+          CASE
+                    WHEN mark >= 0
+                          AND mark < 3.0 THEN 'Незадовільно'
+                              WHEN mark >= 3.0
+                          AND mark <= 4.0 THEN 'Задовільно'
+                              WHEN mark > 4.1
+                          AND mark <= 4.5 THEN 'Добре'
+                              WHEN mark > 4.6
+                          AND mark <= 5.0 THEN 'Відмінно'
+                              ELSE 'Інше'
+          END AS mark_l
+     FROM students_exams;

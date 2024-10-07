@@ -164,13 +164,7 @@
 
 
 
-   SELECT *
-     FROM dishes d
-    INNER JOIN dishes_to_ingredients d_to_i ON d.id = d_to_i.id_dishes
-    INNER JOIN ingredients i ON i.id = d_to_i.id_ingredients;
-
-
-
+--склад та вартість (певного) замовлення
    SELECT c."name" || ' ' || c.surname AS customer_name,
           d.title AS dish_name,
           otd.quantity_dishes,
@@ -188,3 +182,33 @@
           d.title,
           otd.quantity_dishes,
           d.price;
+
+
+
+--перелік замовлень за певний тиждень (страви декілька в рядку через кому)
+   SELECT c."name" || ' ' || c.surname AS customer_name,
+          o.created_ad,
+          STRING_AGG(d.title, ', ') AS dishes,
+          o.total_price
+     FROM customers c
+    INNER JOIN orders o ON c.id = o.id_customer
+    INNER JOIN orders_to_dishes o_to_d ON o.id = o_to_d.id_orders
+    INNER JOIN dishes d ON d.id = o_to_d.id_dishes
+    WHERE created_ad BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE
+ GROUP BY c."name",
+          c.surname,
+          o.total_price,
+          o.created_ad;
+
+
+
+--перелік замовлень за певний тиждень (страви одна в рядку)
+   SELECT c."name" || ' ' || c.surname AS customer_name,
+          o.created_ad,
+          d.title AS dishes,
+          o.total_price
+     FROM customers c
+    INNER JOIN orders o ON c.id = o.id_customer
+    INNER JOIN orders_to_dishes o_to_d ON o.id = o_to_d.id_orders
+    INNER JOIN dishes d ON d.id = o_to_d.id_dishes
+    WHERE created_ad BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE;

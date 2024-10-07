@@ -182,10 +182,11 @@
 
 --Відобразити студентів, які мають середній бал вище 4.0.
    SELECT s."name" || ' ' || s.surname AS "Full name",
-          e.mark
+          AVG(mark)
      FROM students s
     INNER JOIN exams e ON e.id_student = s.id
-    WHERE e.mark >= 4.0;
+ GROUP BY s.id
+   HAVING AVG(e.mark) >= 4.0;
 
 
 

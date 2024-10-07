@@ -16,6 +16,28 @@
 
 
 
+--view student exams courses
+   CREATE VIEW student_exams_courses AS
+   SELECT s."name",
+          s.surname,
+          s.birthday,
+          s.phone_number,
+          s."group",
+          s.gender,
+          s.entered_at,
+          s.departament,
+          e.id_student,
+          e.id_cours,
+          e.mark,
+          c.title,
+          c.discription,
+          c.hours
+     FROM students s
+    INNER JOIN exams e ON s.id = e.id_student
+    INNER JOIN courses c ON c.id = e.id_cours;
+
+
+
 --Отримати список студентів, у яких день народження збігається із днем народження Івана Петрова.
    SELECT *
      FROM students

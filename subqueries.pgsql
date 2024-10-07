@@ -82,3 +82,19 @@
                FROM courses
               WHERE title = 'Курс 1'
           );
+
+
+
+--Отримати список 
+--студент | предмет | оцінка 
+--де оцінка має бути більшою за будь - яку оцінку Івана Петрова
+   SELECT "name" || ' ' || surname AS fullName,
+          departament,
+          mark
+     FROM students_exams
+    WHERE mark > ANY (
+             SELECT mark
+               FROM students_exams
+              WHERE "name" = 'Іван'
+                AND surname = 'Петров'
+          )

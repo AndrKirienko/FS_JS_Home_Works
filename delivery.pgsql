@@ -242,3 +242,10 @@
  ORDER BY quantity_dishes DESC
     LIMIT 5
    OFFSET 0;
+
+
+
+--Ваш прибуток від продажу за місяць, за умови, що Ваш застосунок отримує 3% від суми замовлення
+   SELECT SUM(total_price) * 0.03 AS "Total price for the last month"
+     FROM orders
+    WHERE created_ad BETWEEN CURRENT_DATE - INTERVAL '1 month' AND CURRENT_DATE;

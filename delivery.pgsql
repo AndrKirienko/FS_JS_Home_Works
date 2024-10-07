@@ -229,3 +229,16 @@
    SELECT SUM(total_price) AS "Total price for the last month"
      FROM orders
     WHERE created_ad BETWEEN CURRENT_DATE - INTERVAL '1 month' AND CURRENT_DATE;
+
+
+
+--топ 5 страв на місяць
+   SELECT d.title,
+          o_to_d.quantity_dishes
+     FROM dishes d
+    INNER JOIN orders_to_dishes o_to_d ON d.id = o_to_d.id_dishes
+    INNER JOIN orders o ON o.id = o_to_d.id_orders
+    WHERE created_ad BETWEEN CURRENT_DATE - INTERVAL '1 month' AND CURRENT_DATE
+ ORDER BY quantity_dishes DESC
+    LIMIT 5
+   OFFSET 0;

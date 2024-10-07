@@ -34,4 +34,18 @@
 
 
 
---Відобразити студентів, які мають середній бал вище, ніж Івае Петров.
+--Відобразити студентів, які мають середній бал вище, ніж Івана Петрова.
+   SELECT id_student,
+          "name" || ' ' || surname AS full_name,
+          AVG(mark)
+     FROM students_exams
+ GROUP BY id_student,
+          "name",
+          surname
+   HAVING AVG(mark) > (
+             SELECT AVG(mark)
+               FROM students_exams
+              WHERE "name" = 'Іван'
+                AND surname = 'Петров'
+          )
+ ORDER BY id_student;

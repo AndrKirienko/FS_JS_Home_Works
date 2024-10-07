@@ -38,3 +38,12 @@
 
 
    CREATE TABLE ingredients (id SERIAL PRIMARY KEY, title VARCHAR(50) NOT NULL);
+
+
+
+   CREATE TABLE dishes_to_ingredients (
+          id SERIAL PRIMARY KEY,
+          id_dishes INTEGER REFERENCES dishes (id) ON UPDATE CASCADE ON DELETE RESTRICT,
+          id_ingredients INTEGER REFERENCES ingredients (id) ON UPDATE CASCADE ON DELETE RESTRICT,
+          quantity_ingredients SMALLINT NOT NULL
+          );

@@ -4,8 +4,8 @@
   "settings": {
     "width": 3000,
     "height": 3000,
-    "scrollTop": -296.3301,
-    "scrollLeft": -498.9996,
+    "scrollTop": -253.8778,
+    "scrollLeft": -567.9996,
     "zoomLevel": 0.85,
     "show": 495,
     "database": 4,
@@ -208,7 +208,7 @@
       },
       "OtgEkjhb0dRnTletQS0hX": {
         "id": "OtgEkjhb0dRnTletQS0hX",
-        "name": "dishes_to_ingridients",
+        "name": "dishes_to_ingredients",
         "comment": "",
         "columnIds": [
           "GZTAPniF3nStg9TtdT0CO",
@@ -225,14 +225,14 @@
         ],
         "ui": {
           "x": 385.0219,
-          "y": 352.0694,
+          "y": 350.8929,
           "zIndex": 331,
-          "widthName": 117,
+          "widthName": 120,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1728302442824,
+          "updateAt": 1728313520054,
           "createAt": 1728298185906
         }
       }
@@ -941,40 +941,40 @@
       "CVZyiMC8O9s6V_4-dPyVr": {
         "id": "CVZyiMC8O9s6V_4-dPyVr",
         "tableId": "OtgEkjhb0dRnTletQS0hX",
-        "name": "quantity_ingridients",
+        "name": "quantity_ingredients",
         "comment": "",
-        "dataType": "",
+        "dataType": "SMALLINT",
         "default": "",
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 110,
+          "widthName": 114,
           "widthComment": 60,
           "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1728298460329,
+          "updateAt": 1728313637356,
           "createAt": 1728298317033
         }
       },
       "N7BoNsR82oAuNjpYBljGp": {
         "id": "N7BoNsR82oAuNjpYBljGp",
         "tableId": "OtgEkjhb0dRnTletQS0hX",
-        "name": "id_ingridients",
+        "name": "id_ingredients",
         "comment": "",
         "dataType": "SERIAL",
         "default": "",
         "options": 8,
         "ui": {
           "keys": 2,
-          "widthName": 75,
+          "widthName": 79,
           "widthComment": 60,
           "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1728302918400,
+          "updateAt": 1728313516113,
           "createAt": 1728302418123
         }
       }
@@ -1363,8 +1363,8 @@
           "columnIds": [
             "E0b_oT8hQJlxzvXwkTtRH"
           ],
-          "x": 607.5219,
-          "y": 352.0694,
+          "x": 609.5219,
+          "y": 350.8929,
           "direction": 4
         },
         "meta": {
@@ -1391,8 +1391,8 @@
           "columnIds": [
             "N7BoNsR82oAuNjpYBljGp"
           ],
-          "x": 607.5219,
-          "y": 504.0694,
+          "x": 609.5219,
+          "y": 502.8929,
           "direction": 8
         },
         "meta": {
@@ -1922,7 +1922,7 @@
       1728298185905,
       -1,
       {
-        "name": 1728298200334
+        "name": 1728313429934
       }
     ],
     "t7fdEHQB-cnoRxD-FTpHL": [
@@ -1993,7 +1993,8 @@
       1728298317032,
       -1,
       {
-        "name": 1728298460328
+        "name": 1728313522403,
+        "dataType": 1728313637355
       }
     ],
     "N7BoNsR82oAuNjpYBljGp": [
@@ -2002,7 +2003,7 @@
       -1,
       {
         "options(notNull)": 1728302418120,
-        "name": 1728302433733,
+        "name": 1728313516112,
         "dataType": 1728302418120,
         "default": 1728302418120,
         "comment": 1728302418120,

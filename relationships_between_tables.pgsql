@@ -173,16 +173,17 @@
 
 --Відобразити середній бал та кількість курсів, які відвідав кожен студент.
    SELECT s."name" || ' ' || s.surname AS "Full name",
-          e.mark,
-          s.departament
+          AVG(e.mark) AS avg_mark,
+          COUNT(e.id_student) AS count_corses
      FROM students s
-    INNER JOIN exams e ON s.id = e.id_student;
+    INNER JOIN exams e ON s.id = e.id_student
+ GROUP BY s.id;
 
 
 
 --Відобразити студентів, які мають середній бал вище 4.0.
    SELECT s."name" || ' ' || s.surname AS "Full name",
-          AVG(mark)
+          AVG(e.mark)
      FROM students s
     INNER JOIN exams e ON e.id_student = s.id
  GROUP BY s.id

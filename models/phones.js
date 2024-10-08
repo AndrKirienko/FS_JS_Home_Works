@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: { len: [2, 50] },
       },
       diagonal: {
-        type: DataTypes.FLOAT(5, 5),
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: { min: 0 },
       },

@@ -13,13 +13,34 @@ module.exports = (sequelize, DataTypes) => {
   }
   Phones.init(
     {
-      model: DataTypes.STRING,
-      brand: DataTypes.STRING,
-      date_release: DataTypes.DATEONLY,
-      ram: DataTypes.INTEGER,
-      processor: DataTypes.STRING,
-      diagonal: DataTypes.FLOAT,
-      NFC: DataTypes.BOOLEAN,
+      model: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: { len: [2, 50] },
+      },
+      brand: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: { len: [2, 50] },
+      },
+      date_release: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        validate: { isBefore: new Date().toISOString() },
+      },
+      ram: { type: DataTypes.INTEGER, allowNull: false, validate: { min: 0 } },
+      processor: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: { len: [2, 50] },
+      },
+      diagonal: {
+        type: DataTypes.FLOAT(5, 5),
+        allowNull: false,
+        validate: { min: 0 },
+      },
+      NFC: { type: DataTypes.BOOLEAN, allowNull: false },
     },
     {
       sequelize,

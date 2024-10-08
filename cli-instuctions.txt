@@ -1,0 +1,20 @@
+ініцілізація проєкту Node.js
+npm init -y
+
+встановлення sequelize і необхідних для них пакетів
+npm i sequelize pg pg-hstore
+
+встановлює sequelize CLI як девелоперську залежність
+npm i -D sequelize-cli
+
+ініціалфзація структури проєкту sequelize
+npx sequelize init
+
+створення бази даних згідно з конфігами
+npx sequelize db:create
+
+створення модельки
+npx sequelize model:create --name phones --attributes model:string,brand:string,date_release:dateonly,ram:integer,processor:string,diagonal:float,NFC:boolean
+
+виконує міграції
+npx sequelize db:migrate

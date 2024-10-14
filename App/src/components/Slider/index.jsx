@@ -1,4 +1,4 @@
-import { Component, useState } from 'react'
+import { Component } from 'react'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import styles from './Slider.module.sass'
 import { slides } from './ImagesForSlider'
@@ -9,7 +9,7 @@ class Slider extends Component {
 		super(props)
 	
 		this.state = {
-			 first
+			 currentSlideIndex: 0
 		}
 	}
   // const [currentSlideIndex, setCurrentSlideIndex] = useState(0)

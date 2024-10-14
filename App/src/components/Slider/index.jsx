@@ -18,7 +18,7 @@ class Slider extends Component {
   nextSlide() {
     this.setState(prevState => ({
       currentSlideIndex:
-        prevState.currentSlideIndex === slider.length - 1
+        prevState.currentSlideIndex === slides.length - 1
           ? 0
           : prevState.currentSlideIndex + 1,
     }))
@@ -32,30 +32,24 @@ class Slider extends Component {
           : prevState.currentSlideIndex - 1,
     }))
   }
-  // const nextSlide = () => {
-  //   setCurrentSlideIndex(index => (index === slides.length - 1 ? 0 : index + 1))
-  // }
 
-  // const prevSlide = () => {
-  //   setCurrentSlideIndex(index => (index === 0 ? slides.length - 1 : index - 1))
-  // }
+  render() {
+    const { currentSlideIndex } = this.state
+    const currentSlide = slides[currentSlideIndex]
 
-	render() {
-		
-		
     return (
       <section className={styles.sliderWrapper}>
         <div className={styles.slider}>
-          <button className={styles.prevBtn} onClick={prevSlide}>
+          <button className={styles.prevBtn} onClick={this.prevSlide}>
             <GrPrevious />
           </button>
           <img
             key={slides.id}
             className={styles.slideImg}
-            src={slides[this.state.currentSlideIndex].src}
-            alt=""
+            src={currentSlide.src}
+            alt={currentSlide.alt || 'Slide image'}
           />
-          <button className={styles.nextBtn} onClick={nextSlide}>
+          <button className={styles.nextBtn} onClick={this.nextSlide}>
             <GrNext />
           </button>
         </div>

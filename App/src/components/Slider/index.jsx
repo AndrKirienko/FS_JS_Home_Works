@@ -1,21 +1,30 @@
-import { useState } from 'react'
+import { Component, useState } from 'react'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import styles from './Slider.module.sass'
 import { slides } from './ImagesForSlider'
 
-function Slider() {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
+class Slider extends Component {
 
-  const nextSlide = () => {
-    setCurrentSlideIndex(index => (index === slides.length - 1 ? 0 : index + 1))
-  }
+	constructor(props) {
+		super(props)
+	
+		this.state = {
+			 first
+		}
+	}
+  // const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
-  const prevSlide = () => {
-    setCurrentSlideIndex(index => (index === 0 ? slides.length - 1 : index - 1))
-  }
+  // const nextSlide = () => {
+  //   setCurrentSlideIndex(index => (index === slides.length - 1 ? 0 : index + 1))
+  // }
 
-  return (
-    <section className={styles.sliderWrapper}>
+  // const prevSlide = () => {
+  //   setCurrentSlideIndex(index => (index === 0 ? slides.length - 1 : index - 1))
+  // }
+
+  render() {
+    return
+    ;<section className={styles.sliderWrapper}>
       <div className={styles.slider}>
         <button className={styles.prevBtn} onClick={prevSlide}>
           <GrPrevious />
@@ -31,7 +40,7 @@ function Slider() {
         </button>
       </div>
     </section>
-  )
+  }
 }
 
 export default Slider

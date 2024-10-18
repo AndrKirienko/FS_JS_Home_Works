@@ -1,0 +1,29 @@
+###200
+PATCH http://localhost:5000/api/phones/5
+Content-Type: application/json
+
+{
+	"model": "Xperia 5 III",
+	"brand": "Sony",
+	"dataRelease": "2021-08-20",
+	"ram": 8,
+	"processor": "Snapdragon 888",
+	"diagonal": 6.1,
+	"isNFC": true
+}
+
+###404 'Phone Not Found'
+PATCH http://localhost:5000/api/phones/0
+Content-Type: application/json
+
+{
+	"model": "Xperia 5"
+}
+
+###404 'Phone Not Found'
+PATCH http://localhost:5000/api/phones/1
+Content-Type: application/json
+
+{
+	"model": ""
+}

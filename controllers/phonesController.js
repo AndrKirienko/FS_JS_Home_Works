@@ -56,5 +56,28 @@ module.exports.getPhoneById = async (req, res, next) => {
     next(err)
   }
 }
-module.exports.updatePhoneById = async (req, res, next) => {}
+module.exports.updatePhoneById = async (req, res, next) => {
+  const {
+    params: { phoneId },
+    body,
+  } = req
+
+  try {
+    const [, [updatedPhone]] = await Phones.update(body, {
+      where: { id: phoneId },
+      returning: true,
+      raw: true,
+    })
+
+    if (!updatedPhone) {
+      return next(createHttpError(404, 'Phone Not Found'))
+    }
+
+    const preparedPhone = _.omit(updatedPhone, ['createdAt', 'updatedAt'])
+
+    res.status(200).send({ data: preparedPhone })
+  } catch (err) {
+    next(err)
+  }
+}
 module.exports.deletePhoneById = async (req, res, next) => {}

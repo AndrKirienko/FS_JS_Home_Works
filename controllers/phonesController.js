@@ -8,7 +8,7 @@ module.exports.createPhone = async (req, res, next) => {
 
     const preparedPhone = _.omit(createdPhone.get(), ['createdAt', 'updatedAt'])
 
-    res.status(201).send(preparedPhone)
+    res.status(201).send({ data: preparedPhone })
   } catch (err) {
     next(err)
   }

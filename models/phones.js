@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: { len: [2, 50] },
       },
-      date_release: {
+      dateRelease: {
         type: DataTypes.DATEONLY,
         allowNull: false,
         validate: { isBefore: new Date().toISOString() },
@@ -40,12 +40,13 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: { min: 0 },
       },
-      NFC: { type: DataTypes.BOOLEAN, allowNull: false },
+      isNFC: { type: DataTypes.BOOLEAN, allowNull: false, field: 'is_NFC' },
     },
     {
       sequelize,
       modelName: 'Phones',
-    }
+      underscored: true,
+    },
   )
   return Phones
 }

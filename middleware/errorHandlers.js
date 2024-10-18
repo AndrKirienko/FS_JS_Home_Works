@@ -4,6 +4,6 @@ module.exports.errorHandler = (err, req, res, next) => {
   }
 
   const status = err.status || 500
-  const massage = err.message || 'Server Error'
+  const message = err.message || 'Server Error'
   res.status(status).send(message)
 }

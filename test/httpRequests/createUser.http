@@ -1,0 +1,13 @@
+###201
+POST http://localhost:5000/api/phones
+Content-Type: application/json
+
+{
+	"model": "OnePlus 9",
+	"brand": "OnePlus",
+	"dateRelease": "2022-03-23", 
+	"ram": 12,
+	"processor": "Snapdragon 888",
+	"diagonal": 6.55,
+	"isNFC": false
+}

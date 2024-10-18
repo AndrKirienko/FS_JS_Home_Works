@@ -80,4 +80,20 @@ module.exports.updatePhoneById = async (req, res, next) => {
     next(err)
   }
 }
-module.exports.deletePhoneById = async (req, res, next) => {}
+module.exports.deletePhoneById = async (req, res, next) => {
+  const {
+    params: { phoneId },
+  } = req
+
+  try {
+    const deletedPhone = await Phones.destroy({ where: { id: phoneId } })
+
+    if (deletedPhone === 0) {
+      return next(createHttpError(404, 'Phone Not Found'))
+    }
+
+    res.status(204).end()
+  } catch (err) {
+    next(err)
+  }
+}

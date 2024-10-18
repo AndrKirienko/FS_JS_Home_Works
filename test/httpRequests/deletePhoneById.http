@@ -1,0 +1,6 @@
+###204
+DELETE http://localhost:5000/api/phones/2
+
+###404 'Phone Not Found'
+DELETE http://localhost:5000/api/phones/0
+

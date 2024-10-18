@@ -1,0 +1,5 @@
+###200
+GET http://localhost:5000/api/phones/2
+
+###404 'Phone Not Found'
+GET http://localhost:5000/api/phones/0

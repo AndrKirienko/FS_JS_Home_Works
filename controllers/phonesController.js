@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const { Phones } = require('./../models')
+const createHttpError = require('http-errors')
 
 module.exports.createPhone = async (req, res, next) => {
   const { body } = req
@@ -35,6 +36,25 @@ module.exports.getPhones = async (req, res, next) => {
     next(err)
   }
 }
-module.exports.getPhoneById = async (req, res, next) => {}
+module.exports.getPhoneById = async (req, res, next) => {
+  const {
+    params: { phoneId },
+  } = req
+
+  try {
+    const foundPhone = await Phones.findByPk(phoneId, {
+      attributes: { excludes: ['createdAt', 'updatedAt'] },
+      raw: true,
+    })
+
+    if (!foundPhone) {
+      return next(createHttpError(404, 'Phone Not Found'))
+    }
+
+    res.status(200).send({ data: foundPhone })
+  } catch (err) {
+    next(err)
+  }
+}
 module.exports.updatePhoneById = async (req, res, next) => {}
 module.exports.deletePhoneById = async (req, res, next) => {}

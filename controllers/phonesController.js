@@ -14,7 +14,26 @@ module.exports.createPhone = async (req, res, next) => {
   }
 }
 module.exports.getPhones = async (req, res, next) => {
-  res.status(501).send('get /api/phones')
+  const {
+    query: { page, results },
+  } = req
+
+  try {
+    const limit = results
+    const offset = (page - 1) * results
+
+    const foundPhones = await Phones.findAll({
+      attributes: { excludes: ['createdAt', 'updatedAt'] },
+      limit,
+      offset,
+      order: ['id'],
+      raw: true,
+    })
+
+    res.status(200).send({ data: foundPhones })
+  } catch (err) {
+    next(err)
+  }
 }
 module.exports.getPhoneById = async (req, res, next) => {}
 module.exports.updatePhoneById = async (req, res, next) => {}

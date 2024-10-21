@@ -2,24 +2,24 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const SLICE_NAME = 'user'
 
-const initialStateUser = {
+const initialState = {
   nickname: 'Testovich',
   isFavorite: false,
 }
 
 const userSlice = createSlice({
-  initialStateUser,
+  initialState,
   name: SLICE_NAME,
   reducers: {
-    isFavorite(state) {
+    setIsFavorite(state) {
       const { isFavorite } = state
       state.isFavorite = !isFavorite
     },
   },
 })
 
-console.log(userSlice)
+const { reducer, actions } = userSlice
 
-const { reducer } = userSlice
+export const { setIsFavorite } = actions
 
 export default reducer

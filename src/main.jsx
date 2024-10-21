@@ -9,7 +9,16 @@ const initialStateUser = {
   isFavorite: false,
 }
 function reducer(state = initialStateUser, action) {
-  return state
+  const { type } = action
+  const { isFavorite } = state
+
+  console.log(isFavorite)
+  switch (type) {
+    case 'isFavorite':
+      return { ...state, isFavorite: !isFavorite }
+    default:
+      return state
+  }
 }
 
 const store = legacy_createStore(reducer)

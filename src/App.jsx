@@ -1,9 +1,7 @@
+import TodoPage from './pages/TodoPage'
+
 function App() {
-  return (
-    <>
-      <div>dsf</div>
-    </>
-  )
+  return <TodoPage />
 }
 
 export default App

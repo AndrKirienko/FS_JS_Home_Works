@@ -2,12 +2,7 @@ import { connect } from 'react-redux'
 import { FaHeart } from 'react-icons/fa'
 import { setIsFavorite } from '../../store/slices/userSlice'
 
-function User({ nickname, isFavorite, dispatch }) {
-  const handleIsFavorite = () => {
-    const action = setIsFavorite()
-    dispatch(action)
-  }
-
+function User({ nickname, isFavorite, dispatch, handleIsFavorite }) {
   return (
     <>
       <h2>{nickname}</h2>
@@ -25,6 +20,14 @@ function mapStateToProps(state) {
   return state.user
 }
 
-const withAccessToStore = connect(mapStateToProps)
+function mapDispatchToProps(dispatch) {
+  return {
+    handleIsFavorite: () => {
+      dispatch(setIsFavorite())
+    },
+  }
+}
+
+const withAccessToStore = connect(mapStateToProps, mapDispatchToProps)
 
 export default withAccessToStore(User)

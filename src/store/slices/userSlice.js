@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const SLICE_NAME = 'user'
 
-const initialState = {
+const initialStateUser = {
   nickname: 'Testovich',
   isFavorite: false,
 }
 
 const userSlice = createSlice({
-  initialState,
+  initialState: initialStateUser,
   name: SLICE_NAME,
   reducers: {
     setIsFavorite(state) {

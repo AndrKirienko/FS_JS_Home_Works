@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+import CONSTANTS from './../../constants'
 
-const SLICE_NAME = 'user'
+const SLICE_NAME = CONSTANTS.SLICE_NAME
 
 const initialStateUser = {
   nickname: 'Testovich',

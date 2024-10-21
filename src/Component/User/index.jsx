@@ -16,9 +16,7 @@ function User({ nickname, isFavorite, dispatch, handleIsFavorite }) {
   )
 }
 
-function mapStateToProps(state) {
-  return state.user
-}
+const mapStateToProps = ({ user }) => user
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -28,6 +26,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-const withAccessToStore = connect(mapStateToProps, mapDispatchToProps)
-
-export default withAccessToStore(User)
+export default connect(mapStateToProps, mapDispatchToProps)(User)

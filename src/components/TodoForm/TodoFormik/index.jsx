@@ -8,8 +8,8 @@ function TodoFormik({ styles, create }) {
     title: '',
   }
 
-	const submitHandler = (values, { resetForm }) => {
-		console.log(values)
+  const submitHandler = (values, { resetForm }) => {
+    console.log(values)
     create(values)
     resetForm()
   }
@@ -21,8 +21,17 @@ function TodoFormik({ styles, create }) {
     >
       <Form className={styles.form}>
         <label className={styles.labelForm}>
-          <Field className={styles.inputForm} type="text" name="title" placeholder="Todo" />
-          <ErrorMessage name="title" component="div" />
+          <Field
+            className={styles.inputForm}
+            type="text"
+            name="title"
+            placeholder="Todo"
+          />
+          <ErrorMessage
+            className={styles.errorMessage}
+            name="title"
+            component="div"
+          />
         </label>
         <button className={styles.btnAdd} type="submit">
           Add

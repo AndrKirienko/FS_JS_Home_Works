@@ -31,7 +31,7 @@ const todoSlice = createSlice({
       }
     },
     createTodo: (state, { payload }) => {
-      state.todo.push({
+      state.todo.unshift({
         ...payload,
         id: uuidv4(),
         idDone: false,

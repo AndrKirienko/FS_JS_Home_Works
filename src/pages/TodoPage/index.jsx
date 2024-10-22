@@ -1,10 +1,10 @@
 import TodoForm from '../../components/TodoForm'
 import TodoList from '../../components/TodoList'
+import styles from './TodoPage.module.sass'
 
 function TodoPage() {
   return (
-    <div>
-      <h1>My Todo</h1>
+    <div className={styles.todoWrapper}>
       <TodoForm />
       <TodoList />
     </div>

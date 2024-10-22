@@ -4,7 +4,11 @@ import { v4 as uuidv4 } from 'uuid'
 const initialState = {
   todo: [
     { id: uuidv4(), title: 'Buy groceries', isDone: true },
-    { id: uuidv4(), title: 'Complete project report', isDone: false },
+    {
+      id: uuidv4(),
+      title: 'Complete project report',
+      isDone: false,
+    },
     { id: uuidv4(), title: 'Call mom', isDone: true },
   ],
 }
@@ -26,10 +30,17 @@ const todoSlice = createSlice({
         state.todo[foundTodoIndex].isDone = !state.todo[foundTodoIndex].isDone
       }
     },
+    createTodo: (state, { payload }) => {
+      state.todo.push({
+        ...payload,
+        id: uuidv4(),
+        idDone: false,
+      })
+    },
   },
 })
 
 const { reducer, actions } = todoSlice
 
-export const { removeTodo, doneTodo } = actions
+export const { removeTodo, doneTodo, createTodo } = actions
 export default reducer

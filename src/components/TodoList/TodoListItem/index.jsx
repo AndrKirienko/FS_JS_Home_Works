@@ -18,7 +18,7 @@ function TodoListItem({ todo: { id, title, isDone }, remove, done }) {
       >
         {isDone ? <FaRegCheckCircle /> : <FaRegCircle />}
       </button>
-      <h3>{title}</h3>
+      <h3 className={styles.title}>{title}</h3>
       <button
         className={styles.trash}
         onClick={() => {

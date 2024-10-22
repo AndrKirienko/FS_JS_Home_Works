@@ -9,7 +9,6 @@ function TodoList({ todo, remove, done }) {
 
   return (
     <section>
-      <h2>Todo List</h2>
       <ul>{todo.map(mapTodo)}</ul>
     </section>
   )

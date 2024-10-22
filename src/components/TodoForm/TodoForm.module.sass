@@ -8,7 +8,6 @@
 	position: relative
 
 .form
-	width: 100%
 	display: flex
 	align-items: center
 	gap: 1rem
@@ -22,10 +21,12 @@
 	color: white
 	padding: 0.3rem 1rem
 	border-radius: 2px
-	border: none
 	font-weight: 600
 
 	@extend %btnHAF
+
+	&:hover
+		transform: scale(1.02)
 
 .labelForm
 	flex: 1

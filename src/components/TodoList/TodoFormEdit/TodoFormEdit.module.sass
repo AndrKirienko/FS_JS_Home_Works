@@ -1,0 +1,44 @@
+@use './../../../../constants' as *
+
+.formEdit
+	display: flex
+	gap: 1rem
+	width: 100%
+
+.labelEditForm
+	flex: 1
+
+.inputEditForm
+	width: 100%
+	padding: 0.25rem
+	border-radius: 2px
+	outline: none
+	border: 1px solid gray
+
+	&:focus
+		border: 1px solid $primaryColor
+
+.btnCancel
+	outline: none
+	border: 1px solid $primaryColor
+	border-radius: 2px
+	background: none
+	@extend %btnHAF
+	color: $primaryColor
+
+	&:hover
+		transform: scale(1.02)
+
+.btnSave
+	@extend %btnHAF
+	background: $primaryColor
+	color: white
+	border-radius: 2px
+	font-weight: 600
+
+.errorMessageEdit
+	position: absolute
+	bottom: 0.3rem
+	left: 1rem
+	color: red
+	font-size: 0.6rem

@@ -9,7 +9,6 @@ function TodoFormik({ styles, create }) {
   }
 
   const submitHandler = (values, { resetForm }) => {
-    console.log(values)
     create(values)
     resetForm()
   }

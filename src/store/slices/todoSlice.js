@@ -37,10 +37,17 @@ const todoSlice = createSlice({
         idDone: false,
       })
     },
+    editTodo: (state, { payload: { id, title } }) => {
+      const foundTodoIndex = state.todo.findIndex(t => t.id === id)
+
+      if (foundTodoIndex !== -1) {
+        state.todo[foundTodoIndex].title = title
+      }
+    },
   },
 })
 
 const { reducer, actions } = todoSlice
 
-export const { removeTodo, doneTodo, createTodo } = actions
+export const { removeTodo, doneTodo, createTodo, editTodo } = actions
 export default reducer

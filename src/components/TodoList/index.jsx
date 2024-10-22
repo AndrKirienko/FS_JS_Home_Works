@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import TodoListItem from './TodoListItem'
-import { doneTodo, removeTodo } from '../../store/slices/todoSlice'
+import { doneTodo, removeTodo, editTodo } from '../../store/slices/todoSlice'
 
 function TodoList({ todo, remove, done }) {
   const mapTodo = t => (
@@ -22,6 +22,9 @@ const mapDispatchToProps = dispatch => ({
   },
   done: payload => {
     dispatch(doneTodo(payload))
+  },
+  edit: values => {
+    dispatch(editTodo(values))
   },
 })
 

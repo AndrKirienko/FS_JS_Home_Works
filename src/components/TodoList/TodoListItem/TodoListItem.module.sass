@@ -1,16 +1,14 @@
-@use './../../../../constants'
+@use './../../../../constants' as *
 
 %btn
-	background: none
-	border: none
 	padding: 0
 	margin: 0
-	cursor: pointer
 	font-size: 1rem
 
 	@extend %btnHAF
 
-li
+.todoItem
+	position: relative
 	padding: 1rem
 	border: 1px solid gray
 	width: 30rem
@@ -21,8 +19,8 @@ li
 
 .trash
 	@extend %btn
-	margin-left: auto
-	color: constants.$primaryColor
+	margin-left: 1rem
+	color: $primaryColor
 	display: flex
 	justify-content: center
 	align-items: center
@@ -33,10 +31,18 @@ li
 
 .isDoneActive
 	@extend %btn
-	color: constants.$primaryColor
+	color: $primaryColor
 
 .isDoneDisablet
 	@extend %btn
 
 .title
 	margin-right: 1rem
+
+.btnEdit
+	@extend %btn
+	color: $primaryColor
+	margin-left: auto
+	display: flex
+	justify-content: center
+	align-items: center

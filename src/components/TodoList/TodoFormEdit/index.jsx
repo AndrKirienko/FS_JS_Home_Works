@@ -8,8 +8,9 @@ function TodoFormEdit({ id, title, edit, setEdit, isEdit }) {
   const handleCancel = () => {
     setEdit(!isEdit)
   }
-  const submitHandler = values => {
+  const submitHandler = (values, { resetForm }) => {
     edit({ id, title: values.title })
+    resetForm()
     setEdit(!isEdit)
   }
 
@@ -28,7 +29,11 @@ function TodoFormEdit({ id, title, edit, setEdit, isEdit }) {
             component="div"
           />
         </label>
-        <button className={styles.btnCancel} onClick={handleCancel}>
+        <button
+          className={styles.btnCancel}
+          type="reset"
+          onClick={handleCancel}
+        >
           Cancel
         </button>
         <button className={styles.btnSave} type="submit">
@@ -39,12 +44,10 @@ function TodoFormEdit({ id, title, edit, setEdit, isEdit }) {
   )
 }
 
-const mapStateToProps = ({ todoList }) => todoList
-
 const mapDispatchToProps = dispatch => ({
   edit: payload => {
     dispatch(editTodo(payload))
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoFormEdit)
+export default connect(null, mapDispatchToProps)(TodoFormEdit)

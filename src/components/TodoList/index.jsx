@@ -23,9 +23,6 @@ const mapDispatchToProps = dispatch => ({
   done: payload => {
     dispatch(doneTodo(payload))
   },
-  edit: values => {
-    dispatch(editTodo(values))
-  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

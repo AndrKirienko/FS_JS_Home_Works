@@ -4,6 +4,7 @@
 	display: flex
 	gap: 1rem
 	width: 100%
+	margin: -2px 0
 
 .labelEditForm
 	flex: 1
@@ -19,11 +20,11 @@
 		border: 1px solid $primaryColor
 
 .btnCancel
+	@extend %btnHAF
 	outline: none
 	border: 1px solid $primaryColor
 	border-radius: 2px
 	background: none
-	@extend %btnHAF
 	color: $primaryColor
 
 	&:hover

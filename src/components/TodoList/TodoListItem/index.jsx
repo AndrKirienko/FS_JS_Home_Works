@@ -3,8 +3,8 @@ import { FaRegTrashAlt } from 'react-icons/fa'
 import { FaRegCheckCircle } from 'react-icons/fa'
 import { FaRegCircle } from 'react-icons/fa'
 import { MdOutlineModeEdit } from 'react-icons/md'
-import styles from './TodoListItem.module.sass'
 import TodoFormEdit from '../TodoFormEdit'
+import styles from './TodoListItem.module.sass'
 
 function TodoListItem({ todo: { id, title, isDone }, remove, done }) {
   const [isEdit, setEdit] = useState(false)

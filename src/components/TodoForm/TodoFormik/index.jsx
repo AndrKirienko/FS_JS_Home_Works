@@ -19,9 +19,9 @@ function TodoFormik({ styles, create }) {
       onSubmit={submitHandler}
       validationSchema={TODO_VALIDATION_SCHEMA}
     >
-      <Form>
-        <label>
-          <Field type="text" name="title" placeholder="Todo" />
+      <Form className={styles.form}>
+        <label className={styles.labelForm}>
+          <Field className={styles.inputForm} type="text" name="title" placeholder="Todo" />
           <ErrorMessage name="title" component="div" />
         </label>
         <button className={styles.btnAdd} type="submit">

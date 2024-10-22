@@ -1,4 +1,4 @@
-@use './../../../constants'
+@use './../../../constants' as *
 
 .formSection
 	width: 30rem
@@ -16,13 +16,14 @@
 	margin-bottom: 0.5rem
 
 .btnAdd
-	background-color: constants.$primaryColor
+	background-color: $primaryColor
 	color: white
 	padding: 0.3rem 1rem
 	border-radius: 2px
 	border: none
 	font-weight: 600
 
+	@extend %btnFocus
 	@extend %btnHover
 	@extend %btnActive
 
@@ -37,4 +38,4 @@
 	width: 100%
 
 	&:focus, &:hover
-		border: 1px solid constants.$primaryColor
+		border: 1px solid $primaryColor

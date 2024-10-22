@@ -1,5 +1,17 @@
-function TodoList() {
-  return <div>Todo</div>
+import { connect } from 'react-redux'
+import TodoListItem from './TodoListItem'
+
+function TodoList({ todo }) {
+  const mapTodo = t => <TodoListItem key={t.id} todo={t} />
+
+  return (
+    <section>
+      <h2>Todo List</h2>
+      <ul>{todo.map(mapTodo)}</ul>
+    </section>
+  )
 }
 
-export default TodoList
+const mapStateToProps = ({ todoList }) => todoList
+
+export default connect(mapStateToProps)(TodoList)

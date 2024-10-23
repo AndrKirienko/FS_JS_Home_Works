@@ -1,6 +1,7 @@
 import { Field, Form, Formik } from 'formik'
 import { connect } from 'react-redux'
 import { filterTodo } from '../../store/slices/todoSlice'
+import styles from './TodoFilter.module.sass'
 
 function TodoFilter({ filter }) {
   const initialValues = {
@@ -13,13 +14,15 @@ function TodoFilter({ filter }) {
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        <Form>
-          <Field as="select" name="filter">
+        <Form className={styles.filterWrapper}>
+          <Field className={styles.selectSection} as="select" name="filter">
             <option value="all">All</option>
             <option value="done">Done</option>
             <option value="notDone">Not done</option>
           </Field>
-          <button type="submit">Filter</button>
+          <button className={styles.btnFilter} type="submit">
+            Filter
+          </button>
         </Form>
       </Formik>
     </>

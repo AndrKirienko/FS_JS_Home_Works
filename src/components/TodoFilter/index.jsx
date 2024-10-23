@@ -1,10 +1,15 @@
 import { Field, Form, Formik } from 'formik'
+import { connect } from 'react-redux'
+import { filterTodo } from '../../store/slices/todoSlice'
 
-function TodoFilter() {
+function TodoFilter({ filter }) {
   const initialValues = {
-    option: 'all',
+    filter: 'all',
   }
-  const submitHandler = () => {}
+  const submitHandler = (values, { resetForm }) => {
+    filter(values)
+  }
+
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
@@ -21,4 +26,8 @@ function TodoFilter() {
   )
 }
 
-export default TodoFilter
+const mapDispatchToProps = dispatch => ({
+  filter: values => dispatch(filterTodo(values)),
+})
+
+export default connect(null, mapDispatchToProps)(TodoFilter)

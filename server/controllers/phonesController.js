@@ -1,6 +1,7 @@
 const _ = require('lodash')
-const { Phones } = require('./../models')
 const createHttpError = require('http-errors')
+const { Phones } = require('./../models')
+const { INITIAL_PAGE, INITIAL_RESULTS } = require('../constants')
 
 module.exports.createPhone = async (req, res, next) => {
   const { body } = req
@@ -16,7 +17,7 @@ module.exports.createPhone = async (req, res, next) => {
 }
 module.exports.getPhones = async (req, res, next) => {
   const {
-    query: { page, results },
+    query: { page = INITIAL_PAGE, results = INITIAL_RESULTS },
   } = req
 
   try {

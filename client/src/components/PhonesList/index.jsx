@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import styles from './PhonesList.module.sass'
+import { getPhonesThunk } from '../../store/slices/phonesSlice'
+import CONSTANTS from './../../../constants'
 
-function PhoneList() {
+function PhoneList({ getPhones }) {
   const initialResults = 5
 
   const [phones, setPhones] = useState([])
@@ -23,8 +25,13 @@ function PhoneList() {
     setResults(results + initialResults)
   }
 
+	// useEffect(() => {
+	// 	console.log(CONSTANTS)
+  //   getPhones()
+	// }, [])
+	
   useEffect(() => {
-    fetch(`http://localhost:5000/api/phones?page=${page}&results=${results}`)
+    fetch(`${CONSTANTS.BASE_URL}/phones?page=${page}&results=${results}`)
       .then(response => response.json())
       .then(({ data }) => {
         setPhones(data)
@@ -37,15 +44,19 @@ function PhoneList() {
       <ul className={styles.listWrapper}>
         {phones.map(p => (
           <li key={p.id} className={styles.phoneListItem}>
-            {p.model}
+            <div className={styles.connectItemWrapper}>
+              <div className={styles.connectItem}>
+                <h3>
+                  {p.model} {p.brand}
+                </h3>
+              </div>
+              <button className={styles.btn}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
       <div className={styles.addMore}>
-        <button
-          className={styles.btn}
-          onClick={handleAddMore}
-        >
+        <button className={styles.btn} onClick={handleAddMore}>
           Показати ще...
         </button>
       </div>
@@ -64,5 +75,7 @@ function PhoneList() {
 
 const mapStateToProps = ({ phonesData }) => phonesData
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  getPhones: () => dispatch(getPhonesThunk()),
+})
 export default connect(mapStateToProps, mapDispatchToProps)(PhoneList)

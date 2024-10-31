@@ -1,6 +1,11 @@
-function App() {
+import PhonePage from './pages/PhonePage'
 
-  return <div>Hello</div>
+function App() {
+  return (
+    <div>
+      <PhonePage />
+    </div>
+  )
 }
 
 export default App

@@ -11,7 +11,7 @@ li
 	flex-wrap: wrap
 	gap: 0.5rem
 	padding: 1rem
-
+	width: 100%
 	margin: 0 auto
 
 .phoneListItem
@@ -39,11 +39,15 @@ li
 	border-radius: 0.5rem
 	height: 100%
 
-.btn:hover
-	transform: scale(1.05)
+	&:hover
+		transform: scale(1.05)
 
-.btn:active
-	transform: scale(1)
+	&:active
+		transform: scale(1)
+
+	&:focus
+		outline: none
+		transform: scale(1.05)
 
 .addMore
 	display: flex

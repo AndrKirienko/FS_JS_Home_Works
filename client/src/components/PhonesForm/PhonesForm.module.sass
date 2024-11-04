@@ -1,0 +1,48 @@
+*
+	box-sizing: border-box
+
+.formWrapper
+	width: 50%
+	margin: 2rem auto
+	display: flex
+	gap: 1.5rem
+	flex-direction: column
+
+.inputWrapper
+	position: relative
+
+.inputForm
+	padding: 0.5rem
+	border-radius: 0.5rem
+	outline: none
+	border: 1px solid black
+	width: 100%
+
+.inputForm:focus
+	border: 1px solid blue
+
+
+.btnForm
+	border: none
+	background-color: blue
+	padding: 0.5rem
+	color: white
+	border-radius: 0.5rem
+	width: 100%
+
+	&:hover
+		transform: scale(1.005)
+		
+	&:active
+		transform: scale(1)
+
+	&:focus
+		outline: none
+		transform: scale(1.005)
+
+.errorMsgInput
+	position: absolute
+	left: 0.5rem
+	bottom: -0.9rem
+	color: red
+	font-size: 0.7rem

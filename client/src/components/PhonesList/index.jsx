@@ -11,10 +11,25 @@ const {
   PAGINATION: { INITIAL_PAGE, INITIAL_RESULTS },
 } = CONSTANTS
 
-function PhoneList({ removePhone }) {
-  const [phones, setPhones] = useState([])
-  const [page, setPage] = useState(INITIAL_PAGE)
-  const [results, setResults] = useState(INITIAL_RESULTS)
+// function PhoneList({ removePhone }) {
+//   const [phones, setPhones] = useState([])
+
+//   useEffect(() => {
+//     fetch(`${CONSTANTS.BASE_URL}/phones?page=${page}&results=${results}`)
+//       .then(response => response.json())
+//       .then(({ data }) => {
+//         setPhones(data)
+//       })
+//       .catch(err => console.log(err))
+//   }, [page, results])
+
+export const PhoneList = ({ phones, getPhones, page, results }) => {
+  useEffect(() => {
+    getPhones(page, results)
+  }, [page, results])
+
+  // const [page, setPage] = useState(INITIAL_PAGE)
+  // const [results, setResults] = useState(INITIAL_RESULTS)
 
   const handlePrev = () => {
     if (page > 1) {
@@ -24,22 +39,13 @@ function PhoneList({ removePhone }) {
 
   const handleNext = () => {
     if (phones.length > 1) {
-      setPage(page + 1)
+      page + 1
     }
   }
 
   const handleAddMore = () => {
     setResults(results + INITIAL_RESULTS)
   }
-
-  useEffect(() => {
-    fetch(`${CONSTANTS.BASE_URL}/phones?page=${page}&results=${results}`)
-      .then(response => response.json())
-      .then(({ data }) => {
-        setPhones(data)
-      })
-      .catch(err => console.log(err))
-  }, [page, results])
 
   return (
     <div className={styles.wrapper}>
@@ -80,6 +86,7 @@ function PhoneList({ removePhone }) {
 const mapStateToProps = ({ phonesData }) => phonesData
 
 const mapDispatchToProps = dispatch => ({
+  getPhones: (page, results) => dispatch(getPhonesThunk({ page, results })),
   removePhone: payload => dispatch(removePhoneThunk(payload)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(PhoneList)

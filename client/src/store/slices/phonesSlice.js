@@ -1,21 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import * as API from './../../api'
 import CONSTANTS from '../../../constants'
-const PHONES_SLICE_NAME = CONSTANTS
+const {
+  PHONES_SLICE_NAME,
+  PAGINATION: { INITIAL_PAGE, INITIAL_RESULTS },
+} = CONSTANTS
 
 const initialState = {
   phones: [],
-  isFetching: false,
-  error: null,
+  page: INITIAL_PAGE,
+  results: INITIAL_RESULTS,
 }
 
 export const getPhonesThunk = createAsyncThunk(
   `${PHONES_SLICE_NAME}/get`,
-  async (payload, thunkApi) => {
+  async ({ page, results }, thunkApi) => {
     try {
       const {
         data: { data },
-      } = await API.getPhones()
+      } = await API.getPhones(page, results)
       return data
     } catch (error) {
       return thunkApi.rejectWithValue({
@@ -129,7 +132,7 @@ const phonesSlice = createSlice({
 
     builder.addCase(getPhonesThunk.fulfilled, (state, { payload }) => {
       state.isFetching = false
-      state.users = [...payload]
+      state.phones = [...payload]
     })
   },
 })

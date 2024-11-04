@@ -1,11 +1,7 @@
 import PhonePage from './pages/PhonePage'
 
 function App() {
-  return (
-    <div>
-      <PhonePage />
-    </div>
-  )
+  return <PhonePage />
 }
 
 export default App

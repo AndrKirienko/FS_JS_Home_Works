@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import styles from './PhonesList.module.sass'
-import { getPhonesThunk } from '../../store/slices/phonesSlice'
+import {
+  getPhonesThunk,
+  removePhoneThunk,
+} from '../../store/slices/phonesSlice'
 import CONSTANTS from './../../../constants'
 
 const {
   PAGINATION: { INITIAL_PAGE, INITIAL_RESULTS },
 } = CONSTANTS
 
-function PhoneList({ getPhones }) {
+function PhoneList({ removePhone }) {
   const [phones, setPhones] = useState([])
   const [page, setPage] = useState(INITIAL_PAGE)
   const [results, setResults] = useState(INITIAL_RESULTS)
 
-  console.log(phones.length)
   const handlePrev = () => {
     if (page > 1) {
       setPage(page - 1)
@@ -29,11 +31,6 @@ function PhoneList({ getPhones }) {
   const handleAddMore = () => {
     setResults(results + INITIAL_RESULTS)
   }
-
-  // useEffect(() => {
-  // 	console.log(CONSTANTS)
-  //   getPhones()
-  // }, [])
 
   useEffect(() => {
     fetch(`${CONSTANTS.BASE_URL}/phones?page=${page}&results=${results}`)
@@ -55,7 +52,9 @@ function PhoneList({ getPhones }) {
                   {p.model} {p.brand}
                 </h3>
               </div>
-              <button className={styles.btn}>Delete</button>
+              <button className={styles.btn} onClick={() => removePhone(p.id)}>
+                Delete
+              </button>
             </div>
           </li>
         ))}
@@ -81,6 +80,6 @@ function PhoneList({ getPhones }) {
 const mapStateToProps = ({ phonesData }) => phonesData
 
 const mapDispatchToProps = dispatch => ({
-  getPhones: () => dispatch(getPhonesThunk()),
+  removePhone: payload => dispatch(removePhoneThunk(payload)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(PhoneList)

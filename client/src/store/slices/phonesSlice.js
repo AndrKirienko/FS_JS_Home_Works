@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import * as API from './../../api'
-
-const PHONES_SLICE_NAME = 'phones'
+import CONSTANTS from '../../../constants'
+const PHONES_SLICE_NAME = CONSTANTS
 
 const initialState = {
   phones: [],
@@ -16,7 +16,6 @@ export const getPhonesThunk = createAsyncThunk(
       const {
         data: { data },
       } = await API.getPhones()
-      console.log(data)
       return data
     } catch (error) {
       return thunkApi.rejectWithValue({
@@ -24,23 +23,25 @@ export const getPhonesThunk = createAsyncThunk(
         message: error.response.data.errors,
       })
     }
-  },
+  }
 )
 
-// export const removeUserThunk = createAsyncThunk(
-//   `${USERS_SLICE_NAME}/delete`,
-//   async (payload, thunkApi) => {
-//     try {
-//       await API.removeUser(payload)
-//       return payload
-//     } catch (error) {
-//       return thunkApi.rejectWithValue({
-//         status: error.response.status,
-//         message: error.response.data.errors,
-//       })
-//     }
-//   },
-// )
+export const removePhoneThunk = createAsyncThunk(
+  `${PHONES_SLICE_NAME}/delete`,
+  async (payload, thunkApi) => {
+    try {
+      const {
+        data: { data },
+      } = API.removePhone(payload)
+      return payload
+    } catch (error) {
+      return thunkApi.rejectWithValue({
+        status: error.response.status,
+        message: error.response.data.errors,
+      })
+    }
+  }
+)
 
 // export const createUserThunk = createAsyncThunk(
 //   `${USERS_SLICE_NAME}/post`,
@@ -98,7 +99,24 @@ const phonesSlice = createSlice({
     //     state.users = payload
     //   })
 
-    //   //getUsers
+    builder.addCase(removePhoneThunk.pending, (state, action) => {
+      state.isFetching = true
+      state.error = null
+    })
+
+    builder.addCase(removePhoneThunk.rejected, (state, { payload }) => {
+      state.isFetching = false
+      state.error = payload
+    })
+
+    builder.addCase(removePhoneThunk.fulfilled, (state, { payload }) => {
+      state.isFetching = false
+      const removePhoneIndex = state.phones.findIndex(p => p.id === payload)
+      if (removePhoneIndex !== -1) {
+        state.phones.splice(removePhoneIndex, 1)
+      }
+    })
+
     builder.addCase(getPhonesThunk.pending, (state, action) => {
       state.isFetching = true
       state.error = null

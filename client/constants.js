@@ -3,7 +3,8 @@ const CONSTANTS = {
   PAGINATION: {
     INITIAL_PAGE: 1,
     INITIAL_RESULTS: 5,
-  },
+	},
+	PHONES_SLICE_NAME: 'phones'
 }
 
 export default CONSTANTS

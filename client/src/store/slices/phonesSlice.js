@@ -33,9 +33,7 @@ export const removePhoneThunk = createAsyncThunk(
   `${PHONES_SLICE_NAME}/delete`,
   async (payload, thunkApi) => {
     try {
-      const {
-        data: { data },
-      } = API.removePhone(payload)
+      await API.removePhone(payload)
       return payload
     } catch (error) {
       return thunkApi.rejectWithValue({

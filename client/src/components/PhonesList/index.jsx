@@ -4,48 +4,24 @@ import styles from './PhonesList.module.sass'
 import {
   getPhonesThunk,
   removePhoneThunk,
+  handleNext,
+  handlePrev,
+  handleShowMore,
 } from '../../store/slices/phonesSlice'
-import CONSTANTS from './../../../constants'
 
-const {
-  PAGINATION: { INITIAL_PAGE, INITIAL_RESULTS },
-} = CONSTANTS
-
-// function PhoneList({ removePhone }) {
-//   const [phones, setPhones] = useState([])
-
-//   useEffect(() => {
-//     fetch(`${CONSTANTS.BASE_URL}/phones?page=${page}&results=${results}`)
-//       .then(response => response.json())
-//       .then(({ data }) => {
-//         setPhones(data)
-//       })
-//       .catch(err => console.log(err))
-//   }, [page, results])
-
-export const PhoneList = ({ phones, getPhones, page, results }) => {
+export const PhoneList = ({
+  phones,
+  page,
+  results,
+  getPhones,
+  removePhone,
+  handleNext,
+  handlePrev,
+  handleShowMore,
+}) => {
   useEffect(() => {
     getPhones(page, results)
   }, [page, results])
-
-  // const [page, setPage] = useState(INITIAL_PAGE)
-  // const [results, setResults] = useState(INITIAL_RESULTS)
-
-  const handlePrev = () => {
-    if (page > 1) {
-      setPage(page - 1)
-    }
-  }
-
-  const handleNext = () => {
-    if (phones.length > 1) {
-      page + 1
-    }
-  }
-
-  const handleAddMore = () => {
-    setResults(results + INITIAL_RESULTS)
-  }
 
   return (
     <div className={styles.wrapper}>
@@ -66,16 +42,16 @@ export const PhoneList = ({ phones, getPhones, page, results }) => {
         ))}
       </ul>
       <div className={styles.addMore}>
-        <button className={styles.btn} onClick={handleAddMore}>
+        <button className={styles.btn} onClick={() => handleShowMore()}>
           Показати ще...
         </button>
       </div>
       <div className={styles.pageList}>
-        <button className={styles.btn} onClick={handlePrev}>
+        <button className={styles.btn} onClick={() => handlePrev()}>
           prev
         </button>
         <span>{page}</span>
-        <button className={styles.btn} onClick={handleNext}>
+        <button className={styles.btn} onClick={() => handleNext()}>
           next
         </button>
       </div>
@@ -88,5 +64,8 @@ const mapStateToProps = ({ phonesData }) => phonesData
 const mapDispatchToProps = dispatch => ({
   getPhones: (page, results) => dispatch(getPhonesThunk({ page, results })),
   removePhone: payload => dispatch(removePhoneThunk(payload)),
+  handleNext: () => dispatch(handleNext()),
+  handlePrev: () => dispatch(handlePrev()),
+  handleShowMore: () => dispatch(handleShowMore()),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(PhoneList)

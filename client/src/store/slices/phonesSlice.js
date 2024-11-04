@@ -66,6 +66,21 @@ export const removePhoneThunk = createAsyncThunk(
 const phonesSlice = createSlice({
   name: PHONES_SLICE_NAME,
   initialState,
+  reducers: {
+    handleNext: state => {
+      if (state.phones.length > 0) {
+        state.page = state.page + 1
+      }
+    },
+    handlePrev: state => {
+      if (state.page > 1) {
+        state.page = state.page - 1
+      }
+    },
+    handleShowMore: state => {
+      state.results = state.results + INITIAL_RESULTS
+    },
+  },
   extraReducers: builder => {
     //   //createUser
     //   builder.addCase(createUserThunk.pending, (state, action) => {
@@ -137,6 +152,8 @@ const phonesSlice = createSlice({
   },
 })
 
-const { reducer } = phonesSlice
+const { reducer, actions } = phonesSlice
+
+export const { handleNext, handlePrev, handleShowMore } = actions
 
 export default reducer

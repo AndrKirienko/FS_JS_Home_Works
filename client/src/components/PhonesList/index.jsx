@@ -4,13 +4,16 @@ import styles from './PhonesList.module.sass'
 import { getPhonesThunk } from '../../store/slices/phonesSlice'
 import CONSTANTS from './../../../constants'
 
+const {
+  PAGINATION: { INITIAL_PAGE, INITIAL_RESULTS },
+} = CONSTANTS
+
 function PhoneList({ getPhones }) {
-  const initialResults = 5
-
   const [phones, setPhones] = useState([])
-  const [page, setPage] = useState(1)
-  const [results, setResults] = useState(initialResults)
+  const [page, setPage] = useState(INITIAL_PAGE)
+  const [results, setResults] = useState(INITIAL_RESULTS)
 
+  console.log(phones.length)
   const handlePrev = () => {
     if (page > 1) {
       setPage(page - 1)
@@ -18,18 +21,20 @@ function PhoneList({ getPhones }) {
   }
 
   const handleNext = () => {
-    setPage(page + 1)
+    if (phones.length > 1) {
+      setPage(page + 1)
+    }
   }
 
   const handleAddMore = () => {
-    setResults(results + initialResults)
+    setResults(results + INITIAL_RESULTS)
   }
 
-	// useEffect(() => {
-	// 	console.log(CONSTANTS)
+  // useEffect(() => {
+  // 	console.log(CONSTANTS)
   //   getPhones()
-	// }, [])
-	
+  // }, [])
+
   useEffect(() => {
     fetch(`${CONSTANTS.BASE_URL}/phones?page=${page}&results=${results}`)
       .then(response => response.json())

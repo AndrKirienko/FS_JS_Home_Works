@@ -93,17 +93,15 @@ const phonesSlice = createSlice({
     })
 
     builder.addCase(removePhoneThunk.pending, state => {
-      //state.isFetching = true
       state.error = null
     })
 
     builder.addCase(removePhoneThunk.rejected, (state, { payload }) => {
-      // state.isFetching = false
+
       state.error = payload
     })
 
     builder.addCase(removePhoneThunk.fulfilled, (state, { payload }) => {
-      // state.isFetching = false
       const removePhoneIndex = state.phones.findIndex(p => p.id === payload)
       if (removePhoneIndex !== -1) {
         state.phones.splice(removePhoneIndex, 1)
@@ -111,17 +109,14 @@ const phonesSlice = createSlice({
     })
 
     builder.addCase(getPhonesThunk.pending, state => {
-      //state.isFetching = true
       state.error = null
     })
 
     builder.addCase(getPhonesThunk.rejected, (state, { payload }) => {
-      //state.isFetching = false
       state.error = payload
     })
 
     builder.addCase(getPhonesThunk.fulfilled, (state, { payload }) => {
-      //state.isFetching = false
       state.phones = [...payload]
     })
   },

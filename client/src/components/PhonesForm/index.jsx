@@ -1,15 +1,29 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { connect } from 'react-redux'
 import styles from './PhonesForm.module.sass'
 import { PHONE_VALIDATION_SCHEMA } from '../../../utils/validate/validationSchemas'
+import { createPhoneThunk } from '../../store/slices/phonesSlice'
+import { date } from 'yup'
 
 const initialValues = {
   model: '',
   brand: '',
+  dateRelease: '',
+  ram: '',
+  processor: '',
+  diagonal: '',
+  isNFC: false,
 }
-function PhonesForm() {
+function PhonesForm({ createPhone }) {
+  const handleSubmit = (values, formikBag) => {
+    createPhone(values)
+    formikBag.resetForm()
+  }
+
   return (
     <Formik
       initialValues={initialValues}
+      onSubmit={handleSubmit}
       validationSchema={PHONE_VALIDATION_SCHEMA}
     >
       <Form className={styles.formWrapper}>
@@ -41,6 +55,72 @@ function PhonesForm() {
           />
         </label>
 
+        <label className={styles.inputWrapper}>
+          <Field
+            className={styles.inputForm}
+            type="date"
+            name="dateRelease"
+            placeholder="Date Release"
+          />
+          <ErrorMessage
+            className={styles.errorMsgInput}
+            name="dateRelease"
+            component="div"
+          />
+        </label>
+
+        <label className={styles.inputWrapper}>
+          <Field
+            className={styles.inputForm}
+            type="number"
+            name="ram"
+            placeholder="RAM (GB)"
+          />
+          <ErrorMessage
+            className={styles.errorMsgInput}
+            name="ram"
+            component="div"
+          />
+        </label>
+
+        <label className={styles.inputWrapper}>
+          <Field
+            className={styles.inputForm}
+            type="text"
+            name="processor"
+            placeholder="Processor"
+          />
+          <ErrorMessage
+            className={styles.errorMsgInput}
+            name="processor"
+            component="div"
+          />
+        </label>
+
+        <label className={styles.inputWrapper}>
+          <Field
+            className={styles.inputForm}
+            type="number"
+            name="diagonal"
+            placeholder="Screen Diagonal (inches)"
+            step="0.01"
+          />
+          <ErrorMessage
+            className={styles.errorMsgInput}
+            name="diagonal"
+            component="div"
+          />
+        </label>
+
+        <label className={styles.inputWrapper}>
+          <Field className={styles.inputForm} type="checkbox" name="isNFC" />
+          NFC Support
+          <ErrorMessage
+            className={styles.errorMsgInput}
+            name="isNFC"
+            component="div"
+          />
+        </label>
         <button className={styles.btnForm} type="submit">
           Save
         </button>
@@ -49,4 +129,8 @@ function PhonesForm() {
   )
 }
 
-export default PhonesForm
+const mapDispatchToProps = dispatch => ({
+  createPhone: values => dispatch(createPhoneThunk(values)),
+})
+
+export default connect(null, mapDispatchToProps)(PhonesForm)

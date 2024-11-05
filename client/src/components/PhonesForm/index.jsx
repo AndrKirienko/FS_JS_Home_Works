@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import styles from './PhonesForm.module.sass'
 import { PHONE_VALIDATION_SCHEMA } from '../../../utils/validate/validationSchemas'
 import { createPhoneThunk } from '../../store/slices/phonesSlice'
-import { date } from 'yup'
 
 const initialValues = {
   model: '',
@@ -112,9 +111,9 @@ function PhonesForm({ createPhone }) {
           />
         </label>
 
-        <label className={styles.inputWrapper}>
+        <label className={`${styles.inputWrapper} ${styles.inputNFC}`}>
           <Field className={styles.inputForm} type="checkbox" name="isNFC" />
-          NFC Support
+          <span>NFC Support</span>
           <ErrorMessage
             className={styles.errorMsgInput}
             name="isNFC"

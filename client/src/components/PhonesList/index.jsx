@@ -33,6 +33,11 @@ export const PhoneList = ({
                 <h3>
                   {p.model} {p.brand}
                 </h3>
+                <div>Date release: {p.dateRelease}</div>
+                <div>Ram: {p.ram}</div>
+                <div>Processor: {p.processor}</div>
+                <div>Diagonal: {p.diagonal}</div>
+                <div>isNFC: {p.isNFC ? 'True': 'False'}</div>
               </div>
               <button className={styles.btn} onClick={() => removePhone(p.id)}>
                 Delete

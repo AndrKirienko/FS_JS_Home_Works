@@ -187,13 +187,22 @@ use('cinema')
 // ])
 
 //TODO * Підрахуйте загальні збори(revenue) фільмів за країнами.
+// db.movies.aggregate([
+//   {
+//     $group: {
+//       _id: '$country',
+//       totalRevenue: { $sum: '$boxOffice.revenue' },
+//     },
+//   },
+// ])
+
+//TODO *Підрахувати кількість фільмів, знятих в кожній країні після 2010 року.
 db.movies.aggregate([
+  { $match: { releaseYear: { $gt: 2010 } } },
   {
     $group: {
       _id: '$country',
-      totalRevenue: { $sum: '$boxOffice.revenue' },
+      count: { $sum: 1 },
     },
   },
 ])
-
-//TODO *Підрахувати кількість фільмів, знятих в кожній країні після 2010 року.

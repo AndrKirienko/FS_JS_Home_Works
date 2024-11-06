@@ -102,13 +102,17 @@ use('cinema')
 //db.movies.find({}, { _id: 0, title: 1, duration: 1 }).sort({ duration: 1 })
 
 //TODO Отримати другу сторінку при перегляді по 3 фільми на сторінці, впорядкувавши за роком випуску від найновіших до найстаріших.
-db.movies
-  .find({}, { _id: 0, title: 1, releaseYear: 1 })
-  .sort({ releaseYear: -1 })
-  .limit(3)
-  .skip(3)
+// db.movies
+//   .find({}, { _id: 0, title: 1, releaseYear: 1 })
+//   .sort({ releaseYear: -1 })
+//   .limit(3)
+//   .skip(3)
 
 //TODO Знайдіть усі фільми в жанрі "Sci-Fi", * випущені після 2000 року.
+db.movies.find(
+  { genre: 'Sci-Fi', releaseYear: { $gt: 2000 } },
+  { _id: 0, title: 1 },
+)
 
 //TODO Знайти всі фільми, випущені після 2000 року, і показати тільки їх назву, режисера та рік випуску.
 

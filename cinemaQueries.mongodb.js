@@ -160,9 +160,10 @@ use('cinema')
 // )
 
 //TODO Видалити фільм "The Godfather" з колекції.
-db.movies.deleteOne({ title: 'The Godfather' })
+//db.movies.deleteOne({ title: 'The Godfather' })
 
-//TODO * Видалити всі фільми, випущені до 1980 року.
+//TODO * Видалити всі фільми, випущені до 2000 року.
+db.movies.deleteMany({ releaseYear: { $lt: 2001 } })
 
 //TODO *Підрахуйте середню тривалість фільмів у кожному жанрі.
 

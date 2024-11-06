@@ -163,10 +163,17 @@ use('cinema')
 //db.movies.deleteOne({ title: 'The Godfather' })
 
 //TODO * Видалити всі фільми, випущені до 2000 року.
-db.movies.deleteMany({ releaseYear: { $lt: 2001 } })
+//db.movies.deleteMany({ releaseYear: { $lt: 2001 } })
 
 //TODO *Підрахуйте середню тривалість фільмів у кожному жанрі.
-
+db.movies.aggregate([
+  {
+    $group: {
+      _id: '$genre',
+      averageDuration: { $avg: '$duration' },
+    },
+  },
+])
 //TODO * Знайдіть жанр із найбільшою кількістю фільмів.
 
 //TODO * Підрахуйте загальні збори(revenue) фільмів за країнами.

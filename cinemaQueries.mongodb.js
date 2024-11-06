@@ -175,17 +175,25 @@ use('cinema')
 //   },
 // ])
 //TODO * Знайдіть жанр із найбільшою кількістю фільмів.
+// db.movies.aggregate([
+//   {
+//     $group: {
+//       _id: '$genre',
+//       count: { $sum: 1 },
+//     },
+//   },
+//   { $sort: { count: -1 } },
+//   { $limit: 1 },
+// ])
+
+//TODO * Підрахуйте загальні збори(revenue) фільмів за країнами.
 db.movies.aggregate([
   {
     $group: {
-      _id: '$genre',
-      count: { $sum: 1 },
+      _id: '$country',
+      totalRevenue: { $sum: '$boxOffice.revenue' },
     },
   },
-  { $sort: { count: -1 } },
-  { $limit: 1 },
 ])
-
-//TODO * Підрахуйте загальні збори(revenue) фільмів за країнами.
 
 //TODO *Підрахувати кількість фільмів, знятих в кожній країні після 2010 року.

@@ -127,12 +127,22 @@ use('cinema')
 // )
 
 //TODO *Показати другу сторінку результатів для фільмів у жанрі "Action", з 2 фільмами на сторінку.
-db.movies
-  .find({ genre: 'Action' }, { _id: 0, title: 1, genre: 1 })
-  .limit(2)
-  .skip(2)
+// db.movies
+//   .find({ genre: 'Action' }, { _id: 0, title: 1, genre: 1 })
+//   .limit(2)
+//   .skip(2)
 
 //TODO *Відобразити фільми з бюджетом, більше 10 млн.
+db.movies.aggregate([
+  { $match: { 'boxOffice.budget': { $gt: 10000000 } } },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+      budget: '$boxOffice.budget',
+    },
+  },
+])
 
 //TODO *Відобразити фільми з тегами 'thriller' та 'superhero'
 

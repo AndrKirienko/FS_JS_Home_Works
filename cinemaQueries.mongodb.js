@@ -151,15 +151,16 @@ use('cinema')
 // )
 
 //TODO Оновити тривалість фільму "Inception" до 150 хвилин.
-db.movies.updateOne({ title: 'Inception' }, { $set: { duration: 150 } })
+//db.movies.updateOne({ title: 'Inception' }, { $set: { duration: 150 } })
 
 //TODO *Додати новий тег "blockbuster" до фільму "The Dark Knight". (оператор $push)
-db.movies.updateOne(
-  { title: 'The Dark Knight' },
-  { $push: { tags: 'blockbuster' } },
-)
+// db.movies.updateOne(
+//   { title: 'The Dark Knight' },
+//   { $push: { tags: 'blockbuster' } },
+// )
 
 //TODO Видалити фільм "The Godfather" з колекції.
+db.movies.deleteOne({ title: 'The Godfather' })
 
 //TODO * Видалити всі фільми, випущені до 1980 року.
 

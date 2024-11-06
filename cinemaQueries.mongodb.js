@@ -197,12 +197,12 @@ use('cinema')
 // ])
 
 //TODO *Підрахувати кількість фільмів, знятих в кожній країні після 2010 року.
-db.movies.aggregate([
-  { $match: { releaseYear: { $gt: 2010 } } },
-  {
-    $group: {
-      _id: '$country',
-      count: { $sum: 1 },
-    },
-  },
-])
+// db.movies.aggregate([
+//   { $match: { releaseYear: { $gt: 2010 } } },
+//   {
+//     $group: {
+//       _id: '$country',
+//       count: { $sum: 1 },
+//     },
+//   },
+// ])

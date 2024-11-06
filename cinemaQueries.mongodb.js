@@ -115,12 +115,16 @@ use('cinema')
 // )
 
 //TODO Знайти всі фільми, випущені після 2000 року, і показати тільки їх назву, режисера та рік випуску.
-db.movies.find(
-  { releaseYear: { $gt: 2000 } },
-  { _id: 0, title: 1, director: 1, releaseYear: 1 },
-)
+// db.movies.find(
+//   { releaseYear: { $gt: 2000 } },
+//   { _id: 0, title: 1, director: 1, releaseYear: 1 },
+// )
 
 //TODO *Знайти фільми режисера "Christopher Nolan", тривалість яких перевищує 150 хвилин.
+db.movies.find(
+  { director: 'Christopher Nolan', duration: { $lt: 150 } },
+  { _id: 0, title: 1, duration: 1, director: 1 },
+)
 
 //TODO *Показати другу сторінку результатів для фільмів у жанрі "Action", з 2 фільмами на сторінку.
 

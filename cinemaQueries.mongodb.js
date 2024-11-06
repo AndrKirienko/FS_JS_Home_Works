@@ -121,12 +121,16 @@ use('cinema')
 // )
 
 //TODO *Знайти фільми режисера "Christopher Nolan", тривалість яких перевищує 150 хвилин.
-db.movies.find(
-  { director: 'Christopher Nolan', duration: { $lt: 150 } },
-  { _id: 0, title: 1, duration: 1, director: 1 },
-)
+// db.movies.find(
+//   { director: 'Christopher Nolan', duration: { $lt: 150 } },
+//   { _id: 0, title: 1, duration: 1, director: 1 },
+// )
 
 //TODO *Показати другу сторінку результатів для фільмів у жанрі "Action", з 2 фільмами на сторінку.
+db.movies
+  .find({ genre: 'Action' }, { _id: 0, title: 1, genre: 1 })
+  .limit(2)
+  .skip(2)
 
 //TODO *Відобразити фільми з бюджетом, більше 10 млн.
 

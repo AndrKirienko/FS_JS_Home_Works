@@ -145,12 +145,13 @@ use('cinema')
 // ])
 
 //TODO *Відобразити фільми з тегами 'thriller' та 'superhero'
-db.movies.find(
-  { tags: { $all: ['thriller', 'superhero'] } },
-  { _id: 0, title: 1, tags: 1 },
-)
+// db.movies.find(
+//   { tags: { $all: ['thriller', 'superhero'] } },
+//   { _id: 0, title: 1, tags: 1 },
+// )
 
 //TODO Оновити тривалість фільму "Inception" до 150 хвилин.
+db.movies.updateOne({ title: 'Inception' }, { $set: { duration: 150 } })
 
 //TODO *Додати новий тег "blockbuster" до фільму "The Dark Knight". (оператор $push)
 

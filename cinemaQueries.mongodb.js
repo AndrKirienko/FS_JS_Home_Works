@@ -166,15 +166,25 @@ use('cinema')
 //db.movies.deleteMany({ releaseYear: { $lt: 2001 } })
 
 //TODO *Підрахуйте середню тривалість фільмів у кожному жанрі.
+// db.movies.aggregate([
+//   {
+//     $group: {
+//       _id: '$genre',
+//       averageDuration: { $avg: '$duration' },
+//     },
+//   },
+// ])
+//TODO * Знайдіть жанр із найбільшою кількістю фільмів.
 db.movies.aggregate([
   {
     $group: {
       _id: '$genre',
-      averageDuration: { $avg: '$duration' },
+      count: { $sum: 1 },
     },
   },
+  { $sort: { count: -1 } },
+  { $limit: 1 },
 ])
-//TODO * Знайдіть жанр із найбільшою кількістю фільмів.
 
 //TODO * Підрахуйте загальні збори(revenue) фільмів за країнами.
 

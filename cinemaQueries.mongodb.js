@@ -109,12 +109,16 @@ use('cinema')
 //   .skip(3)
 
 //TODO Знайдіть усі фільми в жанрі "Sci-Fi", * випущені після 2000 року.
-db.movies.find(
-  { genre: 'Sci-Fi', releaseYear: { $gt: 2000 } },
-  { _id: 0, title: 1, releaseYear: 1 },
-)
+// db.movies.find(
+//   { genre: 'Sci-Fi', releaseYear: { $gt: 2000 } },
+//   { _id: 0, title: 1, releaseYear: 1 },
+// )
 
 //TODO Знайти всі фільми, випущені після 2000 року, і показати тільки їх назву, режисера та рік випуску.
+db.movies.find(
+  { releaseYear: { $gt: 2000 } },
+  { _id: 0, title: 1, director: 1, releaseYear: 1 },
+)
 
 //TODO *Знайти фільми режисера "Christopher Nolan", тривалість яких перевищує 150 хвилин.
 

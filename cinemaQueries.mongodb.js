@@ -133,18 +133,22 @@ use('cinema')
 //   .skip(2)
 
 //TODO *Відобразити фільми з бюджетом, більше 10 млн.
-db.movies.aggregate([
-  { $match: { 'boxOffice.budget': { $gt: 10000000 } } },
-  {
-    $project: {
-      _id: 0,
-      title: 1,
-      budget: '$boxOffice.budget',
-    },
-  },
-])
+// db.movies.aggregate([
+//   { $match: { 'boxOffice.budget': { $gt: 10000000 } } },
+//   {
+//     $project: {
+//       _id: 0,
+//       title: 1,
+//       budget: '$boxOffice.budget',
+//     },
+//   },
+// ])
 
 //TODO *Відобразити фільми з тегами 'thriller' та 'superhero'
+db.movies.find(
+  { tags: { $all: ['thriller', 'superhero'] } },
+  { _id: 0, title: 1, tags: 1 },
+)
 
 //TODO Оновити тривалість фільму "Inception" до 150 хвилин.
 

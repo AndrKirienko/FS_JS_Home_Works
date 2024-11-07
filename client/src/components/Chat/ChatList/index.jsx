@@ -25,7 +25,6 @@ function ChatList({ messages, isFetching, error, get, limit }) {
               <p>{m.createdAt}</p>
             </div>
             <div className={styles.controlsWrapper}>
-              <button className={styles.btnEdit}>Edit</button>
               <button className={styles.btnDelete}>Delete</button>
             </div>
           </li>

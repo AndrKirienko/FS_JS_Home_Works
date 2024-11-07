@@ -9,7 +9,6 @@ function ChatForm({ fetching }) {
     body: "",
   };
   const addMessage = (values, formikBag) => {
-    // create(values);
     ws.createMessage(values);
     fetching();
     formikBag.resetForm();

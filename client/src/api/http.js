@@ -8,5 +8,3 @@ const apiInstance = axios.create(axiosOptions);
 
 export const getMessages = (limit) =>
   apiInstance.get(`/messages?limit=${limit}`);
-
-export const deleteMessage = (id) => apiInstance.delete(`messages/${id}`);

@@ -32,11 +32,9 @@ export const initSocket = (store) => {
   socketClient.on(NEW_MESSAGE_SUCCESS, (payload) => {
     store.dispatch(newMessageSuccess(payload));
   });
-
   socketClient.on(NEW_MESSAGE_ERROR, (payload) => {
     store.dispatch(newMessageError(payload));
   });
-
   socketClient.on(DELETE_MESSAGE_SUCCESS, (payload) => {
     store.dispatch(deleteMessageSuccess(payload));
   });

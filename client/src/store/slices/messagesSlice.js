@@ -15,18 +15,6 @@ export const getMessagesThunk = createAsyncThunk(
   }
 );
 
-export const deleteMessageThunk = createAsyncThunk(
-  `${MESSAGES_SLICE_NAME}/delete`,
-  async (payload, thunkAPI) => {
-    try {
-      await http.deleteMessage(payload);
-      return payload;
-    } catch (err) {
-      return thunkAPI.rejectWithValue({ message: err.message });
-    }
-  }
-);
-
 const initialState = {
   messages: [],
   isFetching: false,
@@ -71,7 +59,6 @@ const messagesSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // GET
     builder.addCase(getMessagesThunk.pending, (state) => {
       state.isFetching = true;
       state.error = null;

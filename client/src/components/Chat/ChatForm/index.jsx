@@ -15,7 +15,7 @@ function ChatForm({ fetching }) {
     formikBag.resetForm();
   };
   return (
-    <section className={styles.formContainer} style={{ marginTop: "auto" }}>
+    <section className={styles.formContainer}>
       <Formik initialValues={initialValues} onSubmit={addMessage}>
         <Form>
           <Field name="body"></Field>

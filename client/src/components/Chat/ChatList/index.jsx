@@ -15,7 +15,7 @@ function ChatList({ messages, isFetching, error, get, limit }) {
   }, [messages]);
 
   return (
-    <section style={{ overflowY: "auto" }}>
+    <section className={styles.listWrapper}>
       <ul>
         {messages.map((m) => (
           <li key={m._id} className={styles.messageItem}>
@@ -25,8 +25,8 @@ function ChatList({ messages, isFetching, error, get, limit }) {
           </li>
         ))}
       </ul>
-      <div ref={scrollTo} style={{ height: "20px" }}>
-        {error && <div style={{ color: "red" }}>ERROR!!!</div>}
+      <div ref={scrollTo} className={styles.scrollAnchor}>
+        {error && <div className={styles.errorMessage}>ERROR!!!</div>}
         {isFetching && <div>Messages is loading. Please, wait...</div>}
       </div>
     </section>

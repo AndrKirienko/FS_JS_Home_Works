@@ -5,6 +5,9 @@ import { newMessagePending } from "../../../store/slices/messagesSlice";
 import styles from "./ChatForm.module.sass";
 
 function ChatForm({ fetching }) {
+  const initialValues = {
+    body: "",
+  };
   const addMessage = (values, formikBag) => {
     // create(values);
     ws.createMessage(values);
@@ -13,7 +16,7 @@ function ChatForm({ fetching }) {
   };
   return (
     <section className={styles.formContainer} style={{ marginTop: "auto" }}>
-      <Formik initialValues={{ body: "" }} onSubmit={addMessage}>
+      <Formik initialValues={initialValues} onSubmit={addMessage}>
         <Form>
           <Field name="body"></Field>
           <button type="submit">Send</button>

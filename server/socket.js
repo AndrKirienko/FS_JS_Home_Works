@@ -1,7 +1,7 @@
 const { Server } = require('socket.io');
 const { Message } = require('./models');
 const {
-  SOCKET_SERVER_EVENTS: { NEW_MESSAGE, NEW_MESSAGE_SUCCESS, NEW_MESSAGE_ERROR },
+  SOCKET_SERVER_EVENTS: { NEW_MESSAGE, NEW_MESSAGE_SUCCESS, NEW_MESSAGE_ERROR, DELETE_MESSAGE },
 } = require('./constants');
 
 const cors = { origin: '*' };
@@ -19,7 +19,13 @@ function initSocket (httpServer) {
       } catch (error) {
         socket.emit(NEW_MESSAGE_ERROR, error);
       }
-    });
+		});
+		
+		socket.on(DELETE_MESSAGE, async payload => {
+			console.log(payload)
+			//const deletedMessage = await Message.remove(payload)
+
+		} );
   });
 }
 

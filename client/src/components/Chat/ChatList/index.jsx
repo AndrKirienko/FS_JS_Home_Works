@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { getMessagesThunk } from "../../../store/slices/messagesSlice";
 import styles from "./ChatList.module.sass";
+import { ws } from "./../../../api";
 
 function ChatList({ messages, isFetching, error, get, limit }) {
   const scrollTo = useRef(null);
@@ -14,6 +15,10 @@ function ChatList({ messages, isFetching, error, get, limit }) {
     scrollTo?.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  const deleteMessage = (payload) => {
+    ws.deleteMessage(payload);
+  };
+
   return (
     <section className={styles.listWrapper}>
       <ul>
@@ -25,7 +30,12 @@ function ChatList({ messages, isFetching, error, get, limit }) {
               <p>{m.createdAt}</p>
             </div>
             <div className={styles.controlsWrapper}>
-              <button className={styles.btnDelete}>Delete</button>
+              <button
+                className={styles.btnDelete}
+                onClick={() => deleteMessage(m._id)}
+              >
+                Delete
+              </button>
             </div>
           </li>
         ))}

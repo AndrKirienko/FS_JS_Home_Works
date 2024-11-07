@@ -1,16 +1,15 @@
-const { Message } = require("../models");
+const { Message } = require('../models')
 
 module.exports.getMessages = async (req, res, next) => {
-  const { limit = 20 } = req.query;
+  const { limit = 20 } = req.query
 
   try {
     const foundMessages = await Message.find()
       .sort({ createdAt: -1 })
-      .limit(Number(limit));
+      .limit(Number(limit))
 
-    res.status(200).send({ data: foundMessages });
+    res.status(200).send({ data: foundMessages })
   } catch (err) {
-    next(err);
+    next(err)
   }
-};
-
+}

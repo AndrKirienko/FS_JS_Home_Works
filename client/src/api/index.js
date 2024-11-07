@@ -1,3 +1,3 @@
-export * as http from "./http";
+export * as http from './http'
 
-export * as ws from "./ws";
+export * as ws from './ws'

@@ -1,9 +1,9 @@
 module.exports.errorHandler = (err, req, res, next) => {
   if (res.headersSent) {
-    return;
+    return
   }
 
-  const status = err.status ?? 500;
+  const status = err.status ?? 500
 
   res.status(status).send({
     errors: [
@@ -12,5 +12,5 @@ module.exports.errorHandler = (err, req, res, next) => {
         title: err.message ?? 'Server Error',
       },
     ],
-  });
-};
+  })
+}

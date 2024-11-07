@@ -1,28 +1,28 @@
-import { useEffect, useRef } from "react";
-import { connect } from "react-redux";
-import { getMessagesThunk } from "../../../store/slices/messagesSlice";
-import styles from "./ChatList.module.sass";
-import { ws } from "./../../../api";
+import { useEffect, useRef } from 'react'
+import { connect } from 'react-redux'
+import { getMessagesThunk } from '../../../store/slices/messagesSlice'
+import styles from './ChatList.module.sass'
+import { ws } from './../../../api'
 
-function ChatList({ messages, isFetching, error, get, limit }) {
-  const scrollTo = useRef(null);
-
-  useEffect(() => {
-    get(limit);
-  }, [limit]);
+function ChatList ({ messages, isFetching, error, get, limit }) {
+  const scrollTo = useRef(null)
 
   useEffect(() => {
-    scrollTo?.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    get(limit)
+  }, [limit])
 
-  const deleteMessage = (payload) => {
-    ws.deleteMessage(payload);
-  };
+  useEffect(() => {
+    scrollTo?.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
+  const deleteMessage = payload => {
+    ws.deleteMessage(payload)
+  }
 
   return (
     <section className={styles.listWrapper}>
       <ul>
-        {messages.map((m) => (
+        {messages.map(m => (
           <li key={m._id} className={styles.messageItem}>
             <div className={styles.itemBody}>
               <p>{m._id}</p>
@@ -45,11 +45,11 @@ function ChatList({ messages, isFetching, error, get, limit }) {
         {isFetching && <div>Messages is loading. Please, wait...</div>}
       </div>
     </section>
-  );
+  )
 }
-const mapStateToProps = ({ chat }) => chat;
-const mapDispatchToProps = (dispatch) => ({
-  get: (limit) => dispatch(getMessagesThunk(limit)),
-});
+const mapStateToProps = ({ chat }) => chat
+const mapDispatchToProps = dispatch => ({
+  get: limit => dispatch(getMessagesThunk(limit)),
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatList);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatList)

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const messageSchema = new Schema(
   {
@@ -11,8 +11,8 @@ const messageSchema = new Schema(
     },
   },
   { timestamps: true }
-);
+)
 
-const Message = mongoose.model('Message', messageSchema);
+const Message = mongoose.model('Message', messageSchema)
 
-module.exports = Message;
+module.exports = Message

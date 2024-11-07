@@ -19,9 +19,15 @@ function ChatList({ messages, isFetching, error, get, limit }) {
       <ul>
         {messages.map((m) => (
           <li key={m._id} className={styles.messageItem}>
-            <p>{m._id}</p>
-            <p>{m.body}</p>
-            <p>{m.createdAt}</p>
+            <div className={styles.itemBody}>
+              <p>{m._id}</p>
+              <p>{m.body}</p>
+              <p>{m.createdAt}</p>
+            </div>
+            <div className={styles.controlsWrapper}>
+              <button className={styles.btnEdit}>Edit</button>
+              <button className={styles.btnDelete}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>

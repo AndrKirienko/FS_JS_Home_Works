@@ -1,3 +1,15 @@
+%btn
+	background: none
+	border: 1px solid black
+	padding: 6px 16px
+	border-radius: 10px
+
+	&:hover
+		transform: scale(1.05)
+
+	&:active
+		transform: scale(1)
+
 .listWrapper
 	overflow-y: auto
 
@@ -6,10 +18,27 @@
 	margin: 10px
 	box-shadow: 0 0 5px lightgrey
 	border-radius: 5px
-	list-style-type: none
+	display: flex
+	justify-content: space-between
+	align-items: center
+	gap: 14px
+
+.itemBody
 	display: flex
 	flex-direction: column
 	gap: 14px
+
+.controlsWrapper
+	display: flex
+	gap: 16px
+
+.btnEdit
+	@extend %btn
+
+.btnDelete
+	@extend %btn
+	color: red
+	border: 1px solid red
 
 .scrollAnchor
 	height: 20px

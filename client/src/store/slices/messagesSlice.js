@@ -48,9 +48,24 @@ const messagesSlice = createSlice({
         state.messages.splice(0, 1);
       }
       state.messages.push(payload);
-      // state.error = null;
     },
     newMessageError(state, { payload }) {
+      state.isFetching = false;
+      state.error = payload;
+    },
+    deleteMessagePending(state) {
+      state.isFetching = true;
+      state.error = null;
+    },
+    deleteMessageSuccess(state, { payload: { _id } }) {
+      state.isFetching = false;
+      const foundMessageIndex = state.messages.findIndex((m) => m._id === _id);
+
+      if (foundMessageIndex !== -1) {
+        state.messages.splice(foundMessageIndex, 1);
+      }
+    },
+    deleteMessageError(state, { payload }) {
       state.isFetching = false;
       state.error = payload;
     },
@@ -74,7 +89,13 @@ const messagesSlice = createSlice({
 });
 
 const { reducer, actions } = messagesSlice;
-export const { newMessagePending, newMessageSuccess, newMessageError } =
-  actions;
+export const {
+  newMessagePending,
+  newMessageSuccess,
+  newMessageError,
+  deleteMessagePending,
+  deleteMessageSuccess,
+  deleteMessageError,
+} = actions;
 
 export default reducer;

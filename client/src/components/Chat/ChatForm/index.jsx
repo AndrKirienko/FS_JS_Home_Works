@@ -17,9 +17,9 @@ function ChatForm({ fetching }) {
   return (
     <section className={styles.formContainer}>
       <Formik initialValues={initialValues} onSubmit={addMessage}>
-        <Form>
-          <Field name="body"></Field>
-          <button type="submit">Send</button>
+        <Form className={styles.formWrapper}>
+          <Field className={styles.inputForm} name="body"></Field>
+          <button className={styles.btnForm} type="submit">Send</button>
         </Form>
       </Formik>
     </section>

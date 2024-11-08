@@ -2,7 +2,11 @@
 const CONSTANTS = require('../constants');
 
 module.exports.createWhereForAllContests = (
-  typeIndex, contestId, industry, awardSort) => {
+  typeIndex,
+  contestId,
+  industry,
+  awardSort
+) => {
   const object = {
     where: {},
     order: [],
@@ -41,7 +45,7 @@ module.exports.createWhereForAllContests = (
 
 function getPredicateTypes (index) {
   // return { [ bd.Sequelize.Op.or ]: [types[ index ].split(',')] };
-  return types[ index ].split(',');
+  return types[index].split(',');
 }
 
 const types = [

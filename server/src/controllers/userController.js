@@ -15,17 +15,21 @@ module.exports.login = async (req, res, next) => {
   try {
     const foundUser = await userQueries.findUser({ email: req.body.email });
     await userQueries.passwordCompare(req.body.password, foundUser.password);
-    const accessToken = jwt.sign({
-      firstName: foundUser.firstName,
-      userId: foundUser.id,
-      role: foundUser.role,
-      lastName: foundUser.lastName,
-      avatar: foundUser.avatar,
-      displayName: foundUser.displayName,
-      balance: foundUser.balance,
-      email: foundUser.email,
-      rating: foundUser.rating,
-    }, CONSTANTS.JWT_SECRET, { expiresIn: CONSTANTS.ACCESS_TOKEN_TIME });
+    const accessToken = jwt.sign(
+      {
+        firstName: foundUser.firstName,
+        userId: foundUser.id,
+        role: foundUser.role,
+        lastName: foundUser.lastName,
+        avatar: foundUser.avatar,
+        displayName: foundUser.displayName,
+        balance: foundUser.balance,
+        email: foundUser.email,
+        rating: foundUser.rating,
+      },
+      CONSTANTS.JWT_SECRET,
+      { expiresIn: CONSTANTS.ACCESS_TOKEN_TIME }
+    );
     await userQueries.updateUser({ accessToken }, foundUser.id);
     res.send({ token: accessToken });
   } catch (err) {
@@ -35,18 +39,23 @@ module.exports.login = async (req, res, next) => {
 module.exports.registration = async (req, res, next) => {
   try {
     const newUser = await userQueries.userCreation(
-      Object.assign(req.body, { password: req.hashPass }));
-    const accessToken = jwt.sign({
-      firstName: newUser.firstName,
-      userId: newUser.id,
-      role: newUser.role,
-      lastName: newUser.lastName,
-      avatar: newUser.avatar,
-      displayName: newUser.displayName,
-      balance: newUser.balance,
-      email: newUser.email,
-      rating: newUser.rating,
-    }, CONSTANTS.JWT_SECRET, { expiresIn: CONSTANTS.ACCESS_TOKEN_TIME });
+      Object.assign(req.body, { password: req.hashPass })
+    );
+    const accessToken = jwt.sign(
+      {
+        firstName: newUser.firstName,
+        userId: newUser.id,
+        role: newUser.role,
+        lastName: newUser.lastName,
+        avatar: newUser.avatar,
+        displayName: newUser.displayName,
+        balance: newUser.balance,
+        email: newUser.email,
+        rating: newUser.rating,
+      },
+      CONSTANTS.JWT_SECRET,
+      { expiresIn: CONSTANTS.ACCESS_TOKEN_TIME }
+    );
     await userQueries.updateUser({ accessToken }, newUser.id);
     res.send({ token: accessToken });
   } catch (err) {
@@ -59,13 +68,17 @@ module.exports.registration = async (req, res, next) => {
 };
 
 function getQuery (offerId, userId, mark, isFirst, transaction) {
-  const getCreateQuery = () => ratingQueries.createRating({
-    offerId,
-    mark,
-    userId,
-  }, transaction);
-  const getUpdateQuery = () => ratingQueries.updateRating({ mark },
-    { offerId, userId }, transaction);
+  const getCreateQuery = () =>
+    ratingQueries.createRating(
+      {
+        offerId,
+        mark,
+        userId,
+      },
+      transaction
+    );
+  const getUpdateQuery = () =>
+    ratingQueries.updateRating({ mark }, { offerId, userId }, transaction);
   return isFirst ? getCreateQuery : getUpdateQuery;
 }
 
@@ -93,15 +106,17 @@ module.exports.changeMark = async (req, res, next) => {
     const offersArray = await dbClient.Ratings.findAll();
     await Promise.all(
       offersArray.map(async (v, i) => {
-        offersArray[i].Offer = await dbClient.Offers.findOne({ where: { userId: creatorId } });
-      }),
+        offersArray[i].Offer = await dbClient.Offers.findOne({
+          where: { userId: creatorId },
+        });
+      })
     );
 
     /* for (let i = 0; i < offersArray.length; i++) {
       sum += offersArray[ i ].dataValues.mark;
     } */
     for (let i = 0; i < offersArray.length; i++) {
-      sum += offersArray[ i ].mark;
+      sum += offersArray[i].mark;
     }
     avg = sum / offersArray.length;
 
@@ -158,14 +173,19 @@ module.exports.payment = async (req, res, next) => {
       throw new NotEnoughMoney();
     }
 
-    await dbClient.Banks.updateByPk(foundUserMoney.cardNumber, { balance: Number(foundUserMoney.balance) - Number(req.body.price) });
-    await dbClient.Banks.updateByPk(foundSHMoney.cardNumber, { balance: Number(foundUserMoney.balance) + Number(req.body.price)  });
+    await dbClient.Banks.updateByPk(foundUserMoney.cardNumber, {
+      balance: Number(foundUserMoney.balance) - Number(req.body.price),
+    });
+    await dbClient.Banks.updateByPk(foundSHMoney.cardNumber, {
+      balance: Number(foundUserMoney.balance) + Number(req.body.price),
+    });
 
     const orderId = uuid();
     req.body.contests.forEach((contest, index) => {
-      const prize = index === req.body.contests.length - 1 ? Math.ceil(
-        req.body.price / req.body.contests.length)
-        : Math.floor(req.body.price / req.body.contests.length);
+      const prize =
+        index === req.body.contests.length - 1
+          ? Math.ceil(req.body.price / req.body.contests.length)
+          : Math.floor(req.body.price / req.body.contests.length);
       contest = Object.assign(contest, {
         status: index === 0 ? 'active' : 'pending',
         userId: req.tokenData.userId,
@@ -190,8 +210,10 @@ module.exports.updateUser = async (req, res, next) => {
     if (req.file) {
       req.body.avatar = req.file.filename;
     }
-    const updatedUser = await userQueries.updateUser(req.body,
-      req.tokenData.userId);
+    const updatedUser = await userQueries.updateUser(
+      req.body,
+      req.tokenData.userId
+    );
     res.send({
       firstName: updatedUser.firstName,
       lastName: updatedUser.lastName,
@@ -237,7 +259,9 @@ module.exports.cashout = async (req, res, next) => {
     const foundUser = await dbClient.Users.findByPk(req.tokenData.userId);
     const updatedUser = await userQueries.updateUser(
       { balance: foundUser.balance - req.body.sum },
-      foundUser.id, transaction);
+      foundUser.id,
+      transaction
+    );
 
     /* await bankQueries.updateBankBalance({
       balance: bd.sequelize.literal(`CASE
@@ -256,11 +280,27 @@ module.exports.cashout = async (req, res, next) => {
       ],
     },
     transaction); */
-    const foundBalance1 = await dbClient.Banks.findOne({ where: { cardNumber: req.body.number.replace(/ /g, ''), cvc: req.body.cvc, expiry: req.body.expiry } });
-    const foundBalance2 = await dbClient.Banks.findOne({ where: { cardNumber: CONSTANTS.SQUADHELP_BANK_NUMBER, cvc: CONSTANTS.SQUADHELP_BANK_CVC, expiry: CONSTANTS.SQUADHELP_BANK_EXPIRY } });
+    const foundBalance1 = await dbClient.Banks.findOne({
+      where: {
+        cardNumber: req.body.number.replace(/ /g, ''),
+        cvc: req.body.cvc,
+        expiry: req.body.expiry,
+      },
+    });
+    const foundBalance2 = await dbClient.Banks.findOne({
+      where: {
+        cardNumber: CONSTANTS.SQUADHELP_BANK_NUMBER,
+        cvc: CONSTANTS.SQUADHELP_BANK_CVC,
+        expiry: CONSTANTS.SQUADHELP_BANK_EXPIRY,
+      },
+    });
     if (foundBalance1 && foundBalance2) {
-      await dbClient.Banks.updateByPk(foundBalance1.cardNumber, { balance: Number(foundBalance1.balance) + Number(req.body.sum) });
-      await dbClient.Banks.updateByPk(foundBalance2.cardNumber, { balance: Number(foundBalance2.balance) - Number(req.body.sum) });
+      await dbClient.Banks.updateByPk(foundBalance1.cardNumber, {
+        balance: Number(foundBalance1.balance) + Number(req.body.sum),
+      });
+      await dbClient.Banks.updateByPk(foundBalance2.cardNumber, {
+        balance: Number(foundBalance2.balance) - Number(req.body.sum),
+      });
     }
 
     // transaction.commit();

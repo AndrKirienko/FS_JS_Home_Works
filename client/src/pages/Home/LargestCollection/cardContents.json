@@ -1,0 +1,52 @@
+{
+	"cards": [
+		{
+			"id": 1,
+			"url": "/public/staticImages/categoriesIcons/nh-collection-icon1.svg",
+			"body": "Popular Brandable Domains",
+			"backgroundColor": "#f7f5f3"
+		},
+		{
+			"id": 2,
+			"url": "/public/staticImages/categoriesIcons/nh-collection-icon2.svg",
+			"body": "Short Domains",
+			"backgroundColor": "#fcebe6"
+		},
+		{
+			"id": 3,
+			"url": "/public/staticImages/categoriesIcons/nh-collection-icon3.svg",
+			"body": "3 Letter Domains",
+			"backgroundColor": "#e8f7f7"
+		},
+		{
+			"id": 4,
+			"url": "/public/staticImages/categoriesIcons/nh-collection-icon4.svg",
+			"body": "4 Letter Domains",
+			"backgroundColor": "#e8f7f7"
+		},
+		{
+			"id": 5,
+			"url": "/public/staticImages/categoriesIcons/nh-collection-icon5.svg",
+			"body": "5 Letter Domains",
+			"backgroundColor": "#ecf5e6"
+		},
+		{
+			"id": 6,
+			"url": "/public/staticImages/categoriesIcons/nh-collection-icon6.svg",
+			"body": "One Word Domains",
+			"backgroundColor": "#f9f2e7"
+		},
+		{
+			"id": 7,
+			"url": "/public/staticImages/categoriesIcons/nh-collection-icon7.svg",
+			"body": "Ultra Premium Domains",
+			"backgroundColor": "#fcebe6"
+		},
+		{
+			"id": 8,
+			"url": "/public/staticImages/categoriesIcons/nh-collection-icon8.svg",
+			"body": "On Sale",
+			"backgroundColor": "#f7f5f3"
+		}
+	]
+}

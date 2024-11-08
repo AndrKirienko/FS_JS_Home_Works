@@ -1,5 +1,5 @@
 .collectionContainer
-	max-width: 960px
+	max-width: 1480px
 	width: 100%
 	padding: 0 12px
 	margin: 0 auto
@@ -52,10 +52,26 @@
 	display: grid
 	grid-template: repeat(2, auto) / repeat(4, 1fr)
 	gap: 20px
+	margin-bottom: 30px
 
 	@media( max-width: 980px)
 		grid-template: repeat(4, auto) / repeat(2, 1fr)
-	
+
 	@media( max-width: 600px)
 		grid-template: repeat(8, auto) / repeat(1, 1fr)
 
+.cardItem
+	display: flex
+	flex-direction: column
+	padding: 20px
+	height: 220px
+	border-radius: 14px
+
+.cardIcon
+	width: 40px
+	height: 40px
+
+.cardBody
+	margin-top: auto
+	color: #222
+	font-weight: 600

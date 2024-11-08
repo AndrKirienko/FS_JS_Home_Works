@@ -58,10 +58,11 @@ function LargestCollection() {
           {cardContents.cards.map((cards) => (
             <div
               style={{ backgroundColor: cards.backgroundColor }}
+              className={styles.cardItem}
               key={cards.id}
             >
-              <img key={cards.id} src={cards.url} />
-              <p>{cards.body}</p>
+              <img className={styles.cardIcon} alt={cards.url} src={cards.url} />
+              <p className={styles.cardBody}>{cards.body}</p>
             </div>
           ))}
         </div>

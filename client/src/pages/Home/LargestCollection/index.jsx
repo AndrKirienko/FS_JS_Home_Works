@@ -56,7 +56,10 @@ function LargestCollection() {
       <div className={styles.contentTabContainer}>
         <div className={contentTab(CATEGORIES)}>
           {cardContents.cards.map((cards) => (
-            <div style={{ backgroundColor: cards.backgroundColor }}>
+            <div
+              style={{ backgroundColor: cards.backgroundColor }}
+              key={cards.id}
+            >
               <img key={cards.id} src={cards.url} />
               <p>{cards.body}</p>
             </div>

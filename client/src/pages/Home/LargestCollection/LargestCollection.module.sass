@@ -49,4 +49,13 @@
 	display: none
 
 .contentTabActive
-	display: block
+	display: grid
+	grid-template: repeat(2, auto) / repeat(4, 1fr)
+	gap: 20px
+
+	@media( max-width: 980px)
+		grid-template: repeat(4, auto) / repeat(2, 1fr)
+	
+	@media( max-width: 600px)
+		grid-template: repeat(8, auto) / repeat(1, 1fr)
+

@@ -1,7 +1,9 @@
-import React from 'react';
+import styles from './LargestCollection.module.sass'
 
 function LargestCollection() {
-  return <div>LargestCollection</div>;
+	return (<div className={styles.collectionContainer}>
+		<h3 className={styles.collectionTitle}>Largest Collection of Brandable Names</h3>
+	</div>);
 }
 
 export default LargestCollection;

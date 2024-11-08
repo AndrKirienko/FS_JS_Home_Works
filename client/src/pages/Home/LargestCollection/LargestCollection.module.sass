@@ -25,14 +25,22 @@
 	gap: 16px
 	flex-wrap: wrap
 
-.buttonsTab
+%buttons
 	background: none
 	outline: none
 	color: #1a1a1a
 	border: 1px solid #0000001a
 	padding: 13px 20px
 	border-radius: 30px
+	&:hover
+		border: 1px solid #000
+		background-color: #f7f5f3
+
+.buttonsTab
+	@extend %buttons
+
 
 .buttonTabActive
+	@extend %buttons
 	border: 1px solid #000
 	background-color: #f7f5f3

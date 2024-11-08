@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import CONSTANTS from '../../../constants';
+import cardContents from './cardContents.json';
 import styles from './LargestCollection.module.sass';
 
 const { CATEGORIES, INDUSTRIES, IDEAS } = CONSTANTS.TABS;
@@ -25,6 +26,7 @@ function LargestCollection() {
       [styles.buttonTabActive]: toggleState === value,
     });
   };
+
   return (
     <div className={styles.collectionContainer}>
       <h3 className={styles.collectionTitle}>
@@ -52,7 +54,14 @@ function LargestCollection() {
         </button>
       </div>
       <div className={styles.contentTabContainer}>
-        <div className={contentTab(CATEGORIES)}>1</div>
+        <div className={contentTab(CATEGORIES)}>
+          {cardContents.cards.map((cards) => (
+            <div style={{ backgroundColor: cards.backgroundColor }}>
+              <img key={cards.id} src={cards.url} />
+              <p>{cards.body}</p>
+            </div>
+          ))}
+        </div>
         <div className={contentTab(INDUSTRIES)}>2</div>
         <div className={contentTab(IDEAS)}>3</div>
       </div>

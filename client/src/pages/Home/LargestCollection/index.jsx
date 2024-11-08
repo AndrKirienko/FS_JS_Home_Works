@@ -11,7 +11,9 @@ function LargestCollection() {
         branding experts
       </p>
       <div className={styles.buttonsTabContainer}>
-        <button className={styles.buttonsTab}>Top Categories</button>
+        <button className={`${styles.buttonTab} ${styles.buttonsTabActive}`}>
+          Top Categories
+        </button>
         <button className={styles.buttonsTab}>Top Industries</button>
         <button className={styles.buttonsTab}>Top Ideas</button>
       </div>

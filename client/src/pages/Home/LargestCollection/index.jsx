@@ -16,7 +16,12 @@ function LargestCollection() {
         </button>
         <button className={styles.buttonsTab}>Top Industries</button>
         <button className={styles.buttonsTab}>Top Ideas</button>
-      </div>
+			</div>
+			<div className={styles.contentTabContainer}>
+				<div className={styles.contentTab}>1</div>
+				<div className={styles.contentTab}>2</div>
+				<div className={styles.contentTab}>3</div>
+			</div>
     </div>
   );
 }

@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import classNames from 'classnames';
+import CONSTANTS from '../../../constants';
 import styles from './LargestCollection.module.sass';
 
-function LargestCollection() {
-  const [toggleState, setToggleState] = useState('categories');
+const { CATEGORIES, INDUSTRIES, IDEAS } = CONSTANTS.TABS;
 
-  const toggleTab = (index) => {
-    setToggleState(index);
+function LargestCollection() {
+  const [toggleState, setToggleState] = useState(CATEGORIES);
+
+  const toggleTab = (value) => {
+    setToggleState(value);
   };
 
   const contentTab = (value) => {
@@ -33,28 +36,25 @@ function LargestCollection() {
       </p>
       <div className={styles.buttonsTabContainer}>
         <button
-          className={buttonTabs('categories')}
-          onClick={() => toggleTab('categories')}
+          className={buttonTabs(CATEGORIES)}
+          onClick={() => toggleTab(CATEGORIES)}
         >
           Top Categories
         </button>
         <button
-          className={buttonTabs('industries')}
-          onClick={() => toggleTab('industries')}
+          className={buttonTabs(INDUSTRIES)}
+          onClick={() => toggleTab(INDUSTRIES)}
         >
           Top Industries
         </button>
-        <button
-          className={buttonTabs('ideas')}
-          onClick={() => toggleTab('ideas')}
-        >
+        <button className={buttonTabs(IDEAS)} onClick={() => toggleTab(IDEAS)}>
           Top Ideas
         </button>
       </div>
       <div className={styles.contentTabContainer}>
-        <div className={contentTab('categories')}>1</div>
-        <div className={contentTab('industries')}>2</div>
-        <div className={contentTab('ideas')}>3</div>
+        <div className={contentTab(CATEGORIES)}>1</div>
+        <div className={contentTab(INDUSTRIES)}>2</div>
+        <div className={contentTab(IDEAS)}>3</div>
       </div>
     </div>
   );

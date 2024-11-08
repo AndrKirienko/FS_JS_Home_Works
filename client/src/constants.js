@@ -2,6 +2,11 @@ const env = process.env.NODE_ENV || 'development';
 const serverIP = 'localhost';
 const serverPort = 5000;
 export default {
+  TABS: {
+    CATEGORIES: 'categories',
+    INDUSTRIES: 'industries',
+    IDEAS: 'ideas',
+  },
   CONTACTS: {
     TEL: '(877) 355-3585',
   },

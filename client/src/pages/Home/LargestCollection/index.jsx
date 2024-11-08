@@ -10,6 +10,11 @@ function LargestCollection() {
         Explore themed brand name collections created by our experienced team of
         branding experts
       </p>
+      <div className={styles.buttonsTabContainer}>
+        <button className={styles.buttonsTab}>Top Categories</button>
+        <button className={styles.buttonsTab}>Top Industries</button>
+        <button className={styles.buttonsTab}>Top Ideas</button>
+      </div>
     </div>
   );
 }

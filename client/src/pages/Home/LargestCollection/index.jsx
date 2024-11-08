@@ -61,13 +61,22 @@ function LargestCollection() {
               className={styles.cardItem}
               key={cards.id}
             >
-              <img className={styles.cardIcon} alt={cards.url} src={cards.url} />
+              <img
+                className={styles.cardIcon}
+                alt={cards.url}
+                src={cards.url}
+              />
               <p className={styles.cardBody}>{cards.body}</p>
             </div>
           ))}
         </div>
         <div className={contentTab(INDUSTRIES)}>2</div>
         <div className={contentTab(IDEAS)}>3</div>
+      </div>
+      <div className={styles.buttonAllCategoriesContainer}>
+        <button className={styles.buttonAllCategories}>
+          View all Categories
+        </button>
       </div>
     </div>
   );

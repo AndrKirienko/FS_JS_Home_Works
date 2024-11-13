@@ -14,7 +14,7 @@ module.exports = {
         references: {
           model: 'Users',
           key: 'id',
-        },
+        },jmgh
       },
       contestId: {
         type: Sequelize.INTEGER,
